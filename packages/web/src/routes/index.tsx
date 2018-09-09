@@ -14,10 +14,12 @@ import { Logout } from "../modules/logout";
 import { ViewListingConnector } from "../modules/listing/view/ViewListingConnector";
 import { MessageConnector } from "../modules/listing/messages/MessageConnector";
 import { EditListingConnector } from "../modules/listing/edit/EditListingConnector";
+import { Homepage } from "../modules/homepage/homepage";
 
 export const Routes = () => (
   <BrowserRouter>
     <Switch>
+      <Route exact={true} path="/" component={Homepage} />
       <Route exact={true} path="/register" component={RegisterConnector} />
       <Route exact={true} path="/login" component={LoginConnector} />
       <Route
