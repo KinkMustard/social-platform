@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form as AntForm, Icon, Button } from "antd";
+import { Form as AntForm, Icon, Button, Card } from "antd";
 import { withFormik, FormikProps, Field, Form } from "formik";
 import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
@@ -21,42 +21,67 @@ interface Props {
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
   render() {
     return (
-      <Form style={{ display: "flex" }}>
-        <div style={{ width: 400, margin: "auto" }}>
-          <Field
-            name="email"
-            prefix={
-              <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-            }
-            placeholder="Email"
-            component={InputField}
-          />
-          <Field
-            name="password"
-            type="password"
-            prefix={
-              <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-            }
-            placeholder="Password"
-            component={InputField}
-          />
-          <FormItem>
-            <Link to="/forgot-password">Forgot password</Link>
-          </FormItem>
-          <FormItem>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Register
-            </Button>
-          </FormItem>
-          <FormItem>
-            Or <Link to="/login">login now!</Link>
-          </FormItem>
-        </div>
-      </Form>
+      <div
+        style={{
+          backgroundColor: "rgb(131,58,180)",
+          background:
+            "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)",
+          position: "absolute",
+          width: "100%",
+          height: "100%"
+        }}
+      >
+        <Card
+          title="Register"
+          bordered={false}
+          style={{
+            width: "400px",
+            margin: "auto",
+            marginTop: "20vh"
+          }}
+        >
+          <Form style={{ display: "flex" }}>
+            <div style={{ width: 400, margin: "auto" }}>
+              <Field
+                name="email"
+                prefix={
+                  (
+                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                  ) as any
+                }
+                placeholder="Email"
+                component={InputField}
+              />
+              <Field
+                name="password"
+                type="password"
+                prefix={
+                  (
+                    <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                  ) as any
+                }
+                placeholder="Password"
+                component={InputField}
+              />
+              <FormItem>
+                <Link to="/forgot-password">Forgot password</Link>
+              </FormItem>
+              <FormItem>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  Register
+                </Button>
+              </FormItem>
+              <FormItem>
+                Or <Link to="/login">login now!</Link>
+              </FormItem>
+            </div>
+          </Form>
+        </Card>
+      </div>
     );
   }
 }
