@@ -4,9 +4,9 @@ import { RouteComponentProps, Link } from "react-router-dom";
 
 export class ViewListingConnector extends React.PureComponent<
   RouteComponentProps<{
-    listingId: string;
+  listingId: string;
   }>
-> {
+  > {
   render() {
     const {
       match: {
@@ -23,7 +23,12 @@ export class ViewListingConnector extends React.PureComponent<
 
           return (
             <div>
-              <div>{data.listing.name}</div>
+              <div>name: {data.listing.name}</div>
+              <div>guests: {data.listing.guests}</div>
+              <div>category: {data.listing.category}</div>
+              <div>description: {data.listing.description}</div>
+              <div>beds: {data.listing.beds}</div>
+              <div>amenities: {data.listing.amenities}</div>
               <div>
                 <Link to={`/listing/${listingId}/chat`}>chat</Link>
               </div>
