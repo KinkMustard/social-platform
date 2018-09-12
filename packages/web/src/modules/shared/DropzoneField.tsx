@@ -68,7 +68,7 @@ export const DropzoneField: React.SFC<FieldProps<any>> = ({
               fontSize: "20px"
             }}
           >
-            Drag and drop your image here or click to upload
+            Drag and drop an image here or click to upload it (optional)
           </p>
         )}
       </Dropzone>

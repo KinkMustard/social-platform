@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Form as AntForm, Button } from "antd";
+import { Form as AntForm, Button, Card } from "antd";
 import { Form, Formik, FormikActions } from "formik";
 import { ImageFile } from "react-dropzone";
 
 import { Page1 } from "./ui/Page1";
-import { Page2 } from "./ui/Page2";
 
 const FormItem = AntForm.Item;
 
@@ -30,7 +29,7 @@ interface Props {
 }
 
 // tslint:disable-next-line:jsx-key
-const pages = [<Page1 />, <Page2 />];
+const pages = [<Page1 />];
 
 export const defaultListingFormValues = {
   pictureUrl: null,
@@ -58,35 +57,50 @@ export class ListingForm extends React.PureComponent<Props, State> {
       >
         {({ isSubmitting, values }) =>
           console.log(values) || (
-            <Form style={{ display: "flex" }}>
-              <div style={{ width: 600, margin: "auto" }}>
-                {pages[this.state.page]}
-                <FormItem>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "flex-end"
-                    }}
-                  >
-                    {this.state.page === pages.length - 1 ? (
-                      <div>
-                        <Button
-                          type="primary"
-                          htmlType="submit"
-                          disabled={isSubmitting}
-                        >
-                          create listing
-                        </Button>
+            <div
+              style={{
+                background: "#ECECEC",
+                padding: "30px",
+                width: "100%",
+                height: "100vh"
+              }}
+            >
+              <Card
+                title="New Post"
+                bordered={false}
+                style={{ width: 800, margin: "auto", textAlign: "center" }}
+              >
+                <Form style={{ display: "flex" }}>
+                  <div style={{ width: 600, margin: "auto" }}>
+                    {pages[this.state.page]}
+                    <FormItem>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-end"
+                        }}
+                      >
+                        {this.state.page === pages.length - 1 ? (
+                          <div>
+                            <Button
+                              type="primary"
+                              htmlType="submit"
+                              disabled={isSubmitting}
+                            >
+                              create listing
+                            </Button>
+                          </div>
+                        ) : (
+                          <Button type="primary" onClick={this.nextPage}>
+                            next page
+                          </Button>
+                        )}
                       </div>
-                    ) : (
-                      <Button type="primary" onClick={this.nextPage}>
-                        next page
-                      </Button>
-                    )}
+                    </FormItem>
                   </div>
-                </FormItem>
-              </div>
-            </Form>
+                </Form>
+              </Card>
+            </div>
           )
         }
       </Formik>

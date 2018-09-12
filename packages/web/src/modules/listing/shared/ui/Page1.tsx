@@ -9,7 +9,7 @@ export const Page1 = () => (
     <Field name="name" placeholder="Title" component={InputField} />
     <Field
       name="description"
-      placeholder="Description"
+      placeholder="Description (optional)"
       component={InputField}
     />
     <Field name="picture" component={DropzoneField} />
