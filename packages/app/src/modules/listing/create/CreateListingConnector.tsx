@@ -15,8 +15,6 @@ interface FormValues {
   description: string;
   upvotes: string;
   downvotes: string;
-  latitude: string;
-  longitude: string;
   amenities: string[];
 }
 
@@ -24,16 +22,14 @@ class C extends React.PureComponent<
   RouteComponentProps<{}> & WithCreateListing
   > {
   submit = async (
-    { upvotes, downvotes, latitude, longitude, ...values }: FormValues,
+    { upvotes, downvotes, ...values }: FormValues,
     { setSubmitting }: FormikActions<FormValues>
   ) => {
     console.log(values);
     await this.props.createListing({
       ...values,
       upvotes: parseInt(upvotes, 10),
-      downvotes: parseInt(downvotes, 10),
-      latitude: parseFloat(latitude),
-      longitude: parseFloat(longitude)
+      downvotes: parseInt(downvotes, 10)
     });
     setSubmitting(false);
   };
@@ -48,8 +44,6 @@ class C extends React.PureComponent<
           description: "",
           upvotes: "0",
           downvotes: "0",
-          latitude: "0",
-          longitude: "0",
           amenities: []
         }}
         onSubmit={this.submit}
@@ -75,20 +69,6 @@ class C extends React.PureComponent<
                 name="description"
                 placeholder="Description"
                 component={InputField}
-              />
-              <Field
-                label="Latitude"
-                name="latitude"
-                placeholder="Latitude"
-                component={InputField}
-                keyboardType="numeric"
-              />
-              <Field
-                label="Longtitude"
-                name="longitude"
-                placeholder="Longitude"
-                component={InputField}
-                keyboardType="numeric"
               />
               <Field
                 name="amenities"

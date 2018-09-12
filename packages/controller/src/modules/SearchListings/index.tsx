@@ -21,8 +21,6 @@ export const searchListingsQuery = gql`
       description
       upvotes
       downvotes
-      longitude
-      latitude
       amenities
       pictureUrl
       owner {

@@ -16,8 +16,6 @@ export const createListingMutation = gql`
     $description: String!
     $upvotes: Int!
     $downvotes: Int!
-    $latitude: Float!
-    $longitude: Float!
     $amenities: [String!]!
   ) {
     createListing(
@@ -28,8 +26,6 @@ export const createListingMutation = gql`
         description: $description
         upvotes: $upvotes
         downvotes: $downvotes
-        latitude: $latitude
-        longitude: $longitude
         amenities: $amenities
       }
     )

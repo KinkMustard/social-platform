@@ -30,12 +30,6 @@ export class Listing extends BaseEntity {
   @Column("int")
   downvotes: number;
 
-  @Column("double precision")
-  latitude: number;
-
-  @Column("double precision")
-  longitude: number;
-
   @Column("text", { array: true })
   amenities: string[];
 

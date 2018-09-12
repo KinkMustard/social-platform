@@ -18,8 +18,6 @@ export interface ListingFormValues {
   description: string;
   upvotes: number;
   downvotes: number;
-  latitude: number;
-  longitude: number;
   amenities: string[];
 }
 
@@ -46,8 +44,6 @@ export const defaultListingFormValues = {
   description: "",
   upvotes: 0,
   downvotes: 0,
-  latitude: 0,
-  longitude: 0,
   amenities: []
 };
 

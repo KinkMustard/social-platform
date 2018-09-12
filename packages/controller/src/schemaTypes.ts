@@ -54,8 +54,6 @@ export interface CreateListingMutationVariables {
   description: string;
   upvotes: number;
   downvotes: number;
-  latitude: number;
-  longitude: number;
   amenities: string[];
 }
 
@@ -174,8 +172,6 @@ export interface SearchListingsQuery_searchListings {
   description: string;
   upvotes: number;
   downvotes: number;
-  longitude: number;
-  latitude: number;
   amenities: string[];
   pictureUrl: string | null;
   owner: SearchListingsQuery_searchListings_owner;
@@ -226,8 +222,6 @@ export interface ViewListingQuery_viewListing {
   description: string;
   upvotes: number;
   downvotes: number;
-  longitude: number;
-  latitude: number;
   amenities: string[];
   pictureUrl: string | null;
   owner: ViewListingQuery_viewListing_owner;
@@ -337,8 +331,6 @@ export interface UpdateListingInput {
   description?: string | null;
   upvotes?: number | null;
   downvotes?: number | null;
-  latitude?: number | null;
-  longitude?: number | null;
   amenities?: string[] | null;
 }
 

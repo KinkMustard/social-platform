@@ -245,30 +245,6 @@
           "deprecationReason": null
         },
         {
-          "name": "latitude",
-          "description": "",
-          "args": [],
-          "type": {
-            "kind": "NON_NULL",
-            "name": null,
-            "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
-          },
-          "isDeprecated": false,
-          "deprecationReason": null
-        },
-        {
-          "name": "longitude",
-          "description": "",
-          "args": [],
-          "type": {
-            "kind": "NON_NULL",
-            "name": null,
-            "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
-          },
-          "isDeprecated": false,
-          "deprecationReason": null
-        },
-        {
           "name": "amenities",
           "description": "",
           "args": [],
@@ -801,26 +777,6 @@
           "defaultValue": null
         },
         {
-          "name": "latitude",
-          "description": "",
-          "type": {
-            "kind": "NON_NULL",
-            "name": null,
-            "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
-          },
-          "defaultValue": null
-        },
-        {
-          "name": "longitude",
-          "description": "",
-          "type": {
-            "kind": "NON_NULL",
-            "name": null,
-            "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
-          },
-          "defaultValue": null
-        },
-        {
           "name": "amenities",
           "description": "",
           "type": {
@@ -915,18 +871,6 @@
           "name": "downvotes",
           "description": "",
           "type": { "kind": "SCALAR", "name": "Int", "ofType": null },
-          "defaultValue": null
-        },
-        {
-          "name": "latitude",
-          "description": "",
-          "type": { "kind": "SCALAR", "name": "Float", "ofType": null },
-          "defaultValue": null
-        },
-        {
-          "name": "longitude",
-          "description": "",
-          "type": { "kind": "SCALAR", "name": "Float", "ofType": null },
           "defaultValue": null
         },
         {
