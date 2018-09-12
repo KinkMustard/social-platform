@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { Form as AntForm, Button } from "antd";
 import { Form, Formik, FormikActions } from "formik";
 import { ImageFile } from "react-dropzone";
@@ -65,8 +64,7 @@ export class ListingForm extends React.PureComponent<Props, State> {
         {({ isSubmitting, values }) =>
           console.log(values) || (
             <Form style={{ display: "flex" }}>
-              <Link to="/logout">logout</Link>
-              <div style={{ width: 400, margin: "auto" }}>
+              <div style={{ width: 600, margin: "auto" }}>
                 {pages[this.state.page]}
                 <FormItem>
                   <div

@@ -5,8 +5,8 @@ import { InputField } from "../../../../modules/shared/InputField";
 import { DropzoneField } from "../../../shared/DropzoneField";
 
 export const Page1 = () => (
-  <>
-    <Field name="name" placeholder="Name" component={InputField} />
+  <React.Fragment>
+    <Field name="name" placeholder="Title" component={InputField} />
     <Field name="category" placeholder="Category" component={InputField} />
     <Field
       name="description"
@@ -14,5 +14,5 @@ export const Page1 = () => (
       component={InputField}
     />
     <Field name="picture" component={DropzoneField} />
-  </>
+  </React.Fragment>
 );

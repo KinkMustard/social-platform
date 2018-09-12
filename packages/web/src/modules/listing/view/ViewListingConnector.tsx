@@ -24,10 +24,10 @@ export class ViewListingConnector extends React.PureComponent<
           return (
             <div>
               <div>name: {data.listing.name}</div>
+              <div>upvotes: {data.listing.upvotes}</div>
               <div>downvotes: {data.listing.downvotes}</div>
               <div>category: {data.listing.category}</div>
               <div>description: {data.listing.description}</div>
-              <div>upvotes: {data.listing.upvotes}</div>
               <div>amenities: {data.listing.amenities}</div>
               <div>
                 <Link to={`/listing/${listingId}/chat`}>chat</Link>

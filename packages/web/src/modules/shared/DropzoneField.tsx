@@ -17,18 +17,62 @@ export const DropzoneField: React.SFC<FieldProps<any>> = ({
         onDrop={([file]) => {
           setFieldValue(name, file);
         }}
+        style={{
+          width: "600px",
+          height: "450px",
+          borderWidth: "2px",
+          borderColor: "#1890ff",
+          borderStyle: "dashed",
+          borderRadius: "5px",
+          backgroundColor: "#e6f7ff",
+          textAlign: "center",
+          lineHeight: "450px",
+          cursor: "pointer"
+        }}
+        acceptStyle={{
+          width: "600px",
+          height: "450px",
+          borderWidth: "2px",
+          borderColor: "#52c41a",
+          borderStyle: "solid",
+          borderRadius: "5px",
+          backgroundColor: "#f6ffed",
+          cursor: "pointer"
+        }}
+        rejectStyle={{
+          width: "600px",
+          height: "450px",
+          borderWidth: "2px",
+          borderColor: "#f5222d",
+          borderStyle: "solid",
+          borderRadius: "5px",
+          backgroundColor: "#fff1f0",
+          cursor: "pointer"
+        }}
         {...props}
       >
-        <p>Try dropping some files here, or click to select files to upload.</p>
+        {pUrl ? (
+          <img
+            src={pUrl}
+            style={{
+              maxHeight: "400px",
+              maxWidth: "550px",
+              width: "auto",
+              height: "auto",
+              marginTop: -10
+            }}
+          />
+        ) : (
+          <p
+            style={{
+              fontSize: "20px"
+            }}
+          >
+            Drag and drop your image here or click to upload
+          </p>
+        )}
       </Dropzone>
-      {pUrl && (
-        <img
-          src={pUrl}
-          style={{
-            maxHeight: 200
-          }}
-        />
-      )}
+
       <Button
         onClick={() =>
           setValues({
