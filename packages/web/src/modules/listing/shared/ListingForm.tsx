@@ -5,7 +5,6 @@ import { ImageFile } from "react-dropzone";
 
 import { Page1 } from "./ui/Page1";
 import { Page2 } from "./ui/Page2";
-import { Page3 } from "./ui/Page3";
 
 const FormItem = AntForm.Item;
 
@@ -16,7 +15,6 @@ export interface ListingFormValues {
   description: string;
   upvotes: number;
   downvotes: number;
-  amenities: string[];
 }
 
 interface State {
@@ -32,7 +30,7 @@ interface Props {
 }
 
 // tslint:disable-next-line:jsx-key
-const pages = [<Page1 />, <Page2 />, <Page3 />];
+const pages = [<Page1 />, <Page2 />];
 
 export const defaultListingFormValues = {
   pictureUrl: null,
@@ -40,8 +38,7 @@ export const defaultListingFormValues = {
   name: "",
   description: "",
   upvotes: 0,
-  downvotes: 0,
-  amenities: []
+  downvotes: 0
 };
 
 export class ListingForm extends React.PureComponent<Props, State> {

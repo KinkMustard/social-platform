@@ -16,7 +16,6 @@ export const viewListingQuery = gql`
       description
       upvotes
       downvotes
-      amenities
       pictureUrl
       owner {
         id

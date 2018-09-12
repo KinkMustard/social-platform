@@ -6,7 +6,6 @@ input CreateListingInput {
   description: String!
   upvotes: Int!
   downvotes: Int!
-  amenities: [String!]!
 }
 
 type Mutation {

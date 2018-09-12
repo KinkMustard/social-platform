@@ -27,9 +27,6 @@ export class Listing extends BaseEntity {
   @Column("int")
   downvotes: number;
 
-  @Column("text", { array: true })
-  amenities: string[];
-
   @Column("uuid")
   userId: string;
 

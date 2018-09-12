@@ -15,7 +15,6 @@ export const createListingMutation = gql`
     $description: String!
     $upvotes: Int!
     $downvotes: Int!
-    $amenities: [String!]!
   ) {
     createListing(
       input: {
@@ -24,7 +23,6 @@ export const createListingMutation = gql`
         description: $description
         upvotes: $upvotes
         downvotes: $downvotes
-        amenities: $amenities
       }
     )
   }

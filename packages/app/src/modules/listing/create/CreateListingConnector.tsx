@@ -14,7 +14,6 @@ interface FormValues {
   description: string;
   upvotes: string;
   downvotes: string;
-  amenities: string[];
 }
 
 class C extends React.PureComponent<
@@ -41,8 +40,7 @@ class C extends React.PureComponent<
           name: "",
           description: "",
           upvotes: "0",
-          downvotes: "0",
-          amenities: []
+          downvotes: "0"
         }}
         onSubmit={this.submit}
       >
@@ -62,11 +60,6 @@ class C extends React.PureComponent<
                 name="description"
                 placeholder="Description"
                 component={InputField}
-              />
-              <Field
-                name="amenities"
-                options={["pool", "basketball court", "soccer field", "yard"]}
-                component={CheckboxGroupField as any}
               />
               <Button onPress={handleSubmit} title="save listing" />
             </ScrollView>

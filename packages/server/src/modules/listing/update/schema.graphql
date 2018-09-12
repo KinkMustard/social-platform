@@ -5,7 +5,6 @@ input UpdateListingInput {
   description: String
   upvotes: Int
   downvotes: Int
-  amenities: [String!]
 }
 
 type Mutation {

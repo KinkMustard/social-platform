@@ -20,7 +20,6 @@ export const searchListingsQuery = gql`
       description
       upvotes
       downvotes
-      amenities
       pictureUrl
       owner {
         id

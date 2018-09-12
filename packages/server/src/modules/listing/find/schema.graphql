@@ -4,7 +4,6 @@ type Listing {
   description: String!
   upvotes: Int!
   downvotes: Int!
-  amenities: [String!]!
   pictureUrl: String
   owner: User!
 }
