@@ -12,7 +12,6 @@ export const createListingMutation = gql`
   mutation CreateListingMutation(
     $picture: Upload
     $name: String!
-    $category: String!
     $description: String!
     $upvotes: Int!
     $downvotes: Int!
@@ -22,7 +21,6 @@ export const createListingMutation = gql`
       input: {
         picture: $picture
         name: $name
-        category: $category
         description: $description
         upvotes: $upvotes
         downvotes: $downvotes

@@ -7,7 +7,6 @@ import { DropzoneField } from "../../../shared/DropzoneField";
 export const Page1 = () => (
   <React.Fragment>
     <Field name="name" placeholder="Title" component={InputField} />
-    <Field name="category" placeholder="Category" component={InputField} />
     <Field
       name="description"
       placeholder="Description"

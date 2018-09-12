@@ -50,7 +50,6 @@ export interface CreateListingMutation {
 export interface CreateListingMutationVariables {
   picture?: any | null;
   name: string;
-  category: string;
   description: string;
   upvotes: number;
   downvotes: number;
@@ -168,7 +167,6 @@ export interface SearchListingsQuery_searchListings_owner {
 export interface SearchListingsQuery_searchListings {
   id: string;
   name: string;
-  category: string;
   description: string;
   upvotes: number;
   downvotes: number;
@@ -218,7 +216,6 @@ export interface ViewListingQuery_viewListing_owner {
 export interface ViewListingQuery_viewListing {
   id: string;
   name: string;
-  category: string;
   description: string;
   upvotes: number;
   downvotes: number;
@@ -327,7 +324,6 @@ export interface UpdateListingInput {
   name?: string | null;
   picture?: any | null;
   pictureUrl?: string | null;
-  category?: string | null;
   description?: string | null;
   upvotes?: number | null;
   downvotes?: number | null;

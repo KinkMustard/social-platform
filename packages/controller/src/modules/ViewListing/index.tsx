@@ -13,7 +13,6 @@ export const viewListingQuery = gql`
     viewListing(id: $id) {
       id
       name
-      category
       description
       upvotes
       downvotes

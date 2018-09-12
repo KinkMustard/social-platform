@@ -1,7 +1,6 @@
 type Listing {
   id: ID!
   name: String!
-  category: String!
   description: String!
   upvotes: Int!
   downvotes: Int!

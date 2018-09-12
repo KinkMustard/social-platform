@@ -13,7 +13,6 @@ export interface ListingFormValues {
   pictureUrl: string | null;
   picture: ImageFile | null;
   name: string;
-  category: string;
   description: string;
   upvotes: number;
   downvotes: number;
@@ -39,7 +38,6 @@ export const defaultListingFormValues = {
   pictureUrl: null,
   picture: null,
   name: "",
-  category: "",
   description: "",
   upvotes: 0,
   downvotes: 0,

@@ -185,18 +185,6 @@
           "deprecationReason": null
         },
         {
-          "name": "category",
-          "description": "",
-          "args": [],
-          "type": {
-            "kind": "NON_NULL",
-            "name": null,
-            "ofType": { "kind": "SCALAR", "name": "String", "ofType": null }
-          },
-          "isDeprecated": false,
-          "deprecationReason": null
-        },
-        {
           "name": "description",
           "description": "",
           "args": [],
@@ -727,16 +715,6 @@
           "defaultValue": null
         },
         {
-          "name": "category",
-          "description": "",
-          "type": {
-            "kind": "NON_NULL",
-            "name": null,
-            "ofType": { "kind": "SCALAR", "name": "String", "ofType": null }
-          },
-          "defaultValue": null
-        },
-        {
           "name": "description",
           "description": "",
           "type": {
@@ -839,12 +817,6 @@
         },
         {
           "name": "pictureUrl",
-          "description": "",
-          "type": { "kind": "SCALAR", "name": "String", "ofType": null },
-          "defaultValue": null
-        },
-        {
-          "name": "category",
           "description": "",
           "type": { "kind": "SCALAR", "name": "String", "ofType": null },
           "defaultValue": null

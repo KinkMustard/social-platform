@@ -17,7 +17,6 @@ export const searchListingsQuery = gql`
     searchListings(input: $input, offset: $offset, limit: $limit) {
       id
       name
-      category
       description
       upvotes
       downvotes

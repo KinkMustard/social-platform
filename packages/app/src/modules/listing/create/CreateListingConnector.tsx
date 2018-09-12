@@ -11,7 +11,6 @@ import { PictureField } from "../../shared/PictureField";
 interface FormValues {
   picture: null;
   name: string;
-  category: string;
   description: string;
   upvotes: string;
   downvotes: string;
@@ -40,7 +39,6 @@ class C extends React.PureComponent<
         initialValues={{
           picture: null,
           name: "",
-          category: "",
           description: "",
           upvotes: "0",
           downvotes: "0",
@@ -59,11 +57,6 @@ class C extends React.PureComponent<
                 name="picture"
                 title="pick a picture"
                 component={PictureField as any}
-              />
-              <Field
-                name="category"
-                placeholder="Category"
-                component={InputField}
               />
               <Field
                 name="description"

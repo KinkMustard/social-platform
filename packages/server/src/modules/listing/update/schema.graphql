@@ -2,7 +2,6 @@ input UpdateListingInput {
   name: String
   picture: Upload
   pictureUrl: String
-  category: String
   description: String
   upvotes: Int
   downvotes: Int
