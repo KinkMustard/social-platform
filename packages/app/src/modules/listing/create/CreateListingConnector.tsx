@@ -13,9 +13,8 @@ interface FormValues {
   name: string;
   category: string;
   description: string;
-  price: string;
-  beds: string;
-  guests: string;
+  upvotes: string;
+  downvotes: string;
   latitude: string;
   longitude: string;
   amenities: string[];
@@ -23,17 +22,16 @@ interface FormValues {
 
 class C extends React.PureComponent<
   RouteComponentProps<{}> & WithCreateListing
-> {
+  > {
   submit = async (
-    { price, beds, guests, latitude, longitude, ...values }: FormValues,
+    { upvotes, downvotes, latitude, longitude, ...values }: FormValues,
     { setSubmitting }: FormikActions<FormValues>
   ) => {
     console.log(values);
     await this.props.createListing({
       ...values,
-      price: parseInt(price, 10),
-      beds: parseInt(beds, 10),
-      guests: parseInt(guests, 10),
+      upvotes: parseInt(upvotes, 10),
+      downvotes: parseInt(downvotes, 10),
       latitude: parseFloat(latitude),
       longitude: parseFloat(longitude)
     });
@@ -48,9 +46,8 @@ class C extends React.PureComponent<
           name: "",
           category: "",
           description: "",
-          price: "0",
-          beds: "0",
-          guests: "0",
+          upvotes: "0",
+          downvotes: "0",
           latitude: "0",
           longitude: "0",
           amenities: []
@@ -78,27 +75,6 @@ class C extends React.PureComponent<
                 name="description"
                 placeholder="Description"
                 component={InputField}
-              />
-              <Field
-                label="Price"
-                name="price"
-                placeholder="Price"
-                component={InputField}
-                keyboardType="numeric"
-              />
-              <Field
-                label="Beds"
-                name="beds"
-                placeholder="Beds"
-                component={InputField}
-                keyboardType="numeric"
-              />
-              <Field
-                label="Guests"
-                name="guests"
-                placeholder="Guests"
-                component={InputField}
-                keyboardType="numeric"
               />
               <Field
                 label="Latitude"

@@ -3,9 +3,8 @@ type Listing {
   name: String!
   category: String!
   description: String!
-  price: Int!
-  beds: Int!
-  guests: Int!
+  upvotes: Int!
+  downvotes: Int!
   latitude: Float!
   longitude: Float!
   amenities: [String!]!

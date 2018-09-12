@@ -10,13 +10,12 @@ import {
 
 export const createListingMutation = gql`
   mutation CreateListingMutation(
-    $picture: Upload,
+    $picture: Upload
     $name: String!
     $category: String!
     $description: String!
-    $price: Int!
-    $beds: Int!
-    $guests: Int!
+    $upvotes: Int!
+    $downvotes: Int!
     $latitude: Float!
     $longitude: Float!
     $amenities: [String!]!
@@ -27,9 +26,8 @@ export const createListingMutation = gql`
         name: $name
         category: $category
         description: $description
-        price: $price
-        beds: $beds
-        guests: $guests
+        upvotes: $upvotes
+        downvotes: $downvotes
         latitude: $latitude
         longitude: $longitude
         amenities: $amenities
@@ -43,10 +41,10 @@ export interface WithCreateListing {
 }
 
 export const withCreateListing = graphql<
-  any,
-  CreateListingMutation,
-  CreateListingMutationVariables,
-  WithCreateListing
+any,
+CreateListingMutation,
+CreateListingMutationVariables,
+WithCreateListing
 >(createListingMutation, {
   props: ({ mutate }) => ({
     createListing: async variables => {

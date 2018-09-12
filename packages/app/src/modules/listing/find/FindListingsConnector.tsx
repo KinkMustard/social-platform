@@ -12,19 +12,19 @@ import { SearchListings } from "@abb/controller";
 
 interface State {
   name: string;
-  guests: number;
-  beds: number;
+  downvotes: number;
+  upvotes: number;
 }
 
 export class FindListingsConnector extends React.PureComponent<{}, State> {
   state = {
     name: "",
-    guests: 1,
-    beds: 1
+    downvotes: 1,
+    upvotes: 1
   };
 
   render() {
-    const { name, guests, beds } = this.state;
+    const { name, downvotes, upvotes } = this.state;
     return (
       <React.Fragment>
         <SafeAreaView />
@@ -36,21 +36,21 @@ export class FindListingsConnector extends React.PureComponent<{}, State> {
         />
         <View style={{ alignItems: "stretch", justifyContent: "center" }}>
           <Slider
-            value={guests}
-            onValueChange={value => this.setState({ guests: value })}
+            value={downvotes}
+            onValueChange={value => this.setState({ downvotes: value })}
             step={1}
             maximumValue={5}
           />
-          <Text>Guests: {guests}</Text>
+          <Text>Downvotes: {downvotes}</Text>
         </View>
         <View style={{ alignItems: "stretch", justifyContent: "center" }}>
           <Slider
-            value={beds}
-            onValueChange={value => this.setState({ beds: value })}
+            value={upvotes}
+            onValueChange={value => this.setState({ upvotes: value })}
             step={1}
             maximumValue={5}
           />
-          <Text>Beds: {beds}</Text>
+          <Text>Upvotes: {upvotes}</Text>
         </View>
         <SearchListings variables={{ input: { name }, limit: 5, offset: 0 }}>
           {({ listings, hasMoreListings, loadMore }) => (

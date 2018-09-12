@@ -9,7 +9,8 @@ import { User } from "./User";
 
 @Entity("listings")
 export class Listing extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid") id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column("varchar", { length: 100 })
   name: string;
@@ -23,20 +24,23 @@ export class Listing extends BaseEntity {
   @Column("varchar", { length: 255 })
   description: string;
 
-  @Column("int") price: number;
+  @Column("int")
+  upvotes: number;
 
-  @Column("int") beds: number;
+  @Column("int")
+  downvotes: number;
 
-  @Column("int") guests: number;
+  @Column("double precision")
+  latitude: number;
 
-  @Column("double precision") latitude: number;
-
-  @Column("double precision") longitude: number;
+  @Column("double precision")
+  longitude: number;
 
   @Column("text", { array: true })
   amenities: string[];
 
-  @Column("uuid") userId: string;
+  @Column("uuid")
+  userId: string;
 
   @ManyToOne(() => User, user => user.listings)
   user: User;

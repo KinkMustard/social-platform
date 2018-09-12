@@ -1,5 +1,3 @@
-
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -13,14 +11,15 @@ export interface ForgotPasswordChangeMutation_forgotPasswordChange {
 }
 
 export interface ForgotPasswordChangeMutation {
-  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
+  forgotPasswordChange:
+    | ForgotPasswordChangeMutation_forgotPasswordChange[]
+    | null;
 }
 
 export interface ForgotPasswordChangeMutationVariables {
   newPassword: string;
   key: string;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -36,7 +35,6 @@ export interface CreateMessageMutation {
 export interface CreateMessageMutationVariables {
   message: MessageInput;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -54,14 +52,12 @@ export interface CreateListingMutationVariables {
   name: string;
   category: string;
   description: string;
-  price: number;
-  beds: number;
-  guests: number;
+  upvotes: number;
+  downvotes: number;
   latitude: number;
   longitude: number;
   amenities: string[];
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -86,7 +82,6 @@ export interface FindListingsQuery {
   findListings: FindListingsQuery_findListings[];
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -101,7 +96,6 @@ export interface SendForgotPasswordEmailMutation {
 export interface SendForgotPasswordEmailMutationVariables {
   email: string;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -129,7 +123,6 @@ export interface LoginMutationVariables {
   password: string;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -140,7 +133,6 @@ export interface LoginMutationVariables {
 export interface LogoutMutation {
   logout: boolean | null;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -163,7 +155,6 @@ export interface RegisterMutationVariables {
   password: string;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -181,9 +172,8 @@ export interface SearchListingsQuery_searchListings {
   name: string;
   category: string;
   description: string;
-  price: number;
-  beds: number;
-  guests: number;
+  upvotes: number;
+  downvotes: number;
   longitude: number;
   latitude: number;
   amenities: string[];
@@ -201,7 +191,6 @@ export interface SearchListingsQueryVariables {
   limit: number;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -217,7 +206,6 @@ export interface UpdateListingMutationVariables {
   listingId: string;
   input: UpdateListingInput;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -236,9 +224,8 @@ export interface ViewListingQuery_viewListing {
   name: string;
   category: string;
   description: string;
-  price: number;
-  beds: number;
-  guests: number;
+  upvotes: number;
+  downvotes: number;
   longitude: number;
   latitude: number;
   amenities: string[];
@@ -253,7 +240,6 @@ export interface ViewListingQuery {
 export interface ViewListingQueryVariables {
   id: string;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -281,7 +267,6 @@ export interface ViewMessagesQueryVariables {
   listingId: string;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -308,7 +293,6 @@ export interface NewMessageSubscriptionVariables {
   listingId: string;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -331,29 +315,28 @@ export interface MeQuery {
 // START Enums and Input Objects
 //==============================================================
 
-// 
+//
 export interface MessageInput {
   text: string;
   listingId: string;
 }
 
-// 
+//
 export interface SearchListingsInput {
-  guests?: number | null;
-  beds?: number | null;
+  downvotes?: number | null;
+  upvotes?: number | null;
   name?: string | null;
 }
 
-// 
+//
 export interface UpdateListingInput {
   name?: string | null;
   picture?: any | null;
   pictureUrl?: string | null;
   category?: string | null;
   description?: string | null;
-  price?: number | null;
-  beds?: number | null;
-  guests?: number | null;
+  upvotes?: number | null;
+  downvotes?: number | null;
   latitude?: number | null;
   longitude?: number | null;
   amenities?: string[] | null;

@@ -6,16 +6,16 @@ export const resolvers: ResolverMap = {
   Query: {
     searchListings: async (
       _,
-      { input: { name, guests, beds }, limit, offset }
+      { input: { name, downvotes, upvotes }, limit, offset }
     ) => {
       let listingQB = getConnection()
         .getRepository(Listing)
         .createQueryBuilder("l");
-      if (guests) {
-        listingQB = listingQB.andWhere("l.guests = :guests", { guests });
+      if (downvotes) {
+        listingQB = listingQB.andWhere("l.downvotes = :downvotes", { downvotes });
       }
-      if (beds) {
-        listingQB = listingQB.andWhere("l.beds = :beds", { beds });
+      if (upvotes) {
+        listingQB = listingQB.andWhere("l.upvotes = :upvotes", { upvotes });
       }
       if (name) {
         listingQB = listingQB.andWhere("l.name ilike :name", {

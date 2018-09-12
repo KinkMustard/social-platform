@@ -16,9 +16,8 @@ export interface ListingFormValues {
   name: string;
   category: string;
   description: string;
-  price: number;
-  beds: number;
-  guests: number;
+  upvotes: number;
+  downvotes: number;
   latitude: number;
   longitude: number;
   amenities: string[];
@@ -45,9 +44,8 @@ export const defaultListingFormValues = {
   name: "",
   category: "",
   description: "",
-  price: 0,
-  beds: 0,
-  guests: 0,
+  upvotes: 0,
+  downvotes: 0,
   latitude: 0,
   longitude: 0,
   amenities: []

@@ -19,9 +19,8 @@ export const searchListingsQuery = gql`
       name
       category
       description
-      price
-      beds
-      guests
+      upvotes
+      downvotes
       longitude
       latitude
       amenities

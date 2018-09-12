@@ -1,6 +1,6 @@
 input SearchListingsInput {
-  guests: Int
-  beds: Int
+  downvotes: Int
+  upvotes: Int
   name: String
 }
 
