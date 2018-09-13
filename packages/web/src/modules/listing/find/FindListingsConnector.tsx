@@ -16,12 +16,12 @@ class C extends React.PureComponent<
           <Card
             key={`${l.id}-card`}
             hoverable={true}
-            style={{ width: 640, margin: "auto" }}
+            style={{ width: 640, margin: "auto", marginBottom: 10 }}
             onClick={() => {
               this.props.history.push(`/listing/${l.id}`);
             }}
           >
-            <p style={{ fontSize: 24, display: "inline" }}>{l.name}</p>{" "}
+            <p style={{ fontSize: 28, display: "inline" }}>{l.name}</p>{" "}
             <p style={{ fontSize: 14, display: "inline", marginLeft: 20 }}>
               posted by: {l.owner.email}
             </p>
@@ -31,7 +31,7 @@ class C extends React.PureComponent<
                 src={l.pictureUrl}
                 style={{
                   display: "block",
-                  maxWidth: 640,
+                  maxWidth: 590,
                   maxHeight: 500,
                   width: "auto",
                   height: "auto",
@@ -39,7 +39,7 @@ class C extends React.PureComponent<
                 }}
               />
             )}
-            <p style={{ fontSize: 24, display: "inline" }}>test</p>
+            <p style={{ fontSize: 18, display: "inline" }}>{l.description}</p>
           </Card>
         ))}
       </div>

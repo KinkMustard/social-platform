@@ -70,6 +70,7 @@ export interface FindListingsQuery_findListings_owner {
 export interface FindListingsQuery_findListings {
   id: string;
   name: string;
+  description: string;
   pictureUrl: string | null;
   owner: FindListingsQuery_findListings_owner;
 }

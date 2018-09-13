@@ -12,6 +12,7 @@ export const findListingsQuery = gql`
     findListings {
       id
       name
+      description
       pictureUrl
       owner {
         id
@@ -27,10 +28,10 @@ export interface WithFindListings {
 }
 
 export const withFindListings = graphql<
-  any,
-  FindListingsQuery,
-  {},
-  WithFindListings
+any,
+FindListingsQuery,
+{},
+WithFindListings
 >(findListingsQuery, {
   props: ({ data }) => {
     let listings: FindListingsQuery_findListings[] = [];
