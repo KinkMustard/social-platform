@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Card } from "antd";
 import { withFindListings, WithFindListings } from "@abb/controller";
-import { Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-const { Meta } = Card;
-
-class C extends React.PureComponent<WithFindListings> {
+class C extends React.PureComponent<
+  RouteComponentProps<{}> & WithFindListings
+  > {
   render() {
     const { listings, loading } = this.props;
     return (
@@ -15,12 +16,30 @@ class C extends React.PureComponent<WithFindListings> {
           <Card
             key={`${l.id}-card`}
             hoverable={true}
-            style={{ width: 240 }}
-            cover={l.pictureUrl && <img alt="example" src={l.pictureUrl} />}
+            style={{ width: 640, margin: "auto" }}
+            onClick={() => {
+              this.props.history.push(`/listing/${l.id}`);
+            }}
           >
-            <Link to={`/listing/${l.id}`}>
-              <Meta title={l.name} description={l.owner.email} />
-            </Link>
+            <p style={{ fontSize: 24, display: "inline" }}>{l.name}</p>{" "}
+            <p style={{ fontSize: 14, display: "inline", marginLeft: 20 }}>
+              posted by: {l.owner.email}
+            </p>
+            {l.pictureUrl && (
+              <img
+                alt="example"
+                src={l.pictureUrl}
+                style={{
+                  display: "block",
+                  maxWidth: 640,
+                  maxHeight: 500,
+                  width: "auto",
+                  height: "auto",
+                  margin: "auto"
+                }}
+              />
+            )}
+            <p style={{ fontSize: 24, display: "inline" }}>test</p>
           </Card>
         ))}
       </div>

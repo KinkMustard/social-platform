@@ -81,8 +81,10 @@ export const DropzoneField: React.SFC<FieldProps<any>> = ({
             picture: null
           })
         }
+        disabled={!pUrl}
+        icon="delete"
       >
-        remove
+        Remove
       </Button>
     </div>
   );
