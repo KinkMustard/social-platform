@@ -13,6 +13,8 @@ export const findListingsQuery = gql`
       id
       name
       description
+      upvotes
+      downvotes
       pictureUrl
       owner {
         id

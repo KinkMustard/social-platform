@@ -22,7 +22,8 @@ class C extends React.PureComponent<
             <div
               style={{
                 width: 100,
-                backgroundColor: "#fafafa"
+                backgroundColor: "#fafafa",
+                textAlign: "center"
               }}
             >
               <Button
@@ -36,6 +37,15 @@ class C extends React.PureComponent<
                   marginTop: 20
                 }}
               />
+              <p
+                style={{
+                  fontSize: 18,
+                  marginTop: 10,
+                  marginBottom: 10
+                }}
+              >
+                {l.upvotes - l.downvotes}
+              </p>
               <Button
                 type="danger"
                 shape="circle"
@@ -43,8 +53,7 @@ class C extends React.PureComponent<
                 size="large"
                 style={{
                   margin: "auto",
-                  display: "block",
-                  marginTop: 20
+                  display: "block"
                 }}
               />
             </div>

@@ -71,6 +71,8 @@ export interface FindListingsQuery_findListings {
   id: string;
   name: string;
   description: string;
+  upvotes: number;
+  downvotes: number;
   pictureUrl: string | null;
   owner: FindListingsQuery_findListings_owner;
 }

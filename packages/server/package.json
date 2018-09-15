@@ -78,7 +78,8 @@
     "redis": "redis-server",
     "postgres": "postgres -D ../../../../../../../PROGRA~1/PostgreSQL/10/data",
     "servers": "concurrently \"yarn redis\" \"yarn postgres\"",
-    "dev": "concurrently \"yarn start\" \"cd ../web && yarn start\""
+    "dev": "concurrently \"yarn start\" \"cd ../web && yarn start\"",
+    "temp": "concurrently \"cd ../controller && yarn build\" \"cd ../common && yarn build\""
   },
   "jest": {
     "rootDir": "./src",
