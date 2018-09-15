@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Card, Icon, Button } from "antd";
-import { withFindListings, WithFindListings } from "@abb/controller";
+import {
+  withFindListings,
+  WithFindListings,
+  UpvoteListing
+} from "@abb/controller";
 import { RouteComponentProps } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
@@ -26,17 +30,32 @@ class C extends React.PureComponent<
                 textAlign: "center"
               }}
             >
-              <Button
-                type="primary"
-                shape="circle"
-                icon="up"
-                size="large"
-                style={{
-                  margin: "auto",
-                  display: "block",
-                  marginTop: 20
-                }}
-              />
+              <UpvoteListing>
+                {({ upvoteListing }) => (
+                  <Button
+                    type="primary"
+                    shape="circle"
+                    icon="up"
+                    size="large"
+                    style={{
+                      margin: "auto",
+                      display: "block",
+                      marginTop: 20
+                    }}
+                    onClick={async () => {
+                      let temp = l.upvotes;
+                      temp++;
+                      const result = await upvoteListing({
+                        variables: {
+                          listingId: l.id,
+                          upvotes: temp
+                        }
+                      });
+                      console.log(result);
+                    }}
+                  />
+                )}
+              </UpvoteListing>
               <p
                 style={{
                   fontSize: 18,

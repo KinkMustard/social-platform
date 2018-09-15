@@ -13,3 +13,4 @@ export * from "./modules/ViewMessages";
 export * from "./modules/CreateMessage";
 export * from "./modules/UpdateListing";
 export * from "./modules/SearchListings";
+export * from "./modules/UpvoteListing";

@@ -21,7 +21,7 @@ export interface WithUpvoteListing {
 }
 
 interface Props {
-  children: (data: WithUpvoteListing) => JSX.Element | null;
+  children: (data: WithUpvoteListing) => any;
 }
 
 export class UpvoteListing extends React.PureComponent<Props> {
