@@ -2,6 +2,21 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: MeQuery
+// ====================================================
+
+export interface MeQuery_me {
+  email: string;
+}
+
+export interface MeQuery {
+  me: MeQuery_me | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: ForgotPasswordChangeMutation
 // ====================================================
 
@@ -19,21 +34,6 @@ export interface ForgotPasswordChangeMutation {
 export interface ForgotPasswordChangeMutationVariables {
   newPassword: string;
   key: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: CreateMessageMutation
-// ====================================================
-
-export interface CreateMessageMutation {
-  createMessage: boolean;
-}
-
-export interface CreateMessageMutationVariables {
-  message: MessageInput;
 }
 
 /* tslint:disable */
@@ -100,6 +100,21 @@ export interface SendForgotPasswordEmailMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateMessageMutation
+// ====================================================
+
+export interface CreateMessageMutation {
+  createMessage: boolean;
+}
+
+export interface CreateMessageMutationVariables {
+  message: MessageInput;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: LoginMutation
 // ====================================================
 
@@ -158,6 +173,36 @@ export interface RegisterMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: ViewListingQuery
+// ====================================================
+
+export interface ViewListingQuery_viewListing_owner {
+  id: string;
+  email: string;
+}
+
+export interface ViewListingQuery_viewListing {
+  id: string;
+  name: string;
+  description: string;
+  upvotes: number;
+  downvotes: number;
+  pictureUrl: string | null;
+  owner: ViewListingQuery_viewListing_owner;
+}
+
+export interface ViewListingQuery {
+  viewListing: ViewListingQuery_viewListing | null;
+}
+
+export interface ViewListingQueryVariables {
+  id: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: SearchListingsQuery
 // ====================================================
 
@@ -206,30 +251,16 @@ export interface UpdateListingMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: ViewListingQuery
+// GraphQL mutation operation: UpvoteListingMutation
 // ====================================================
 
-export interface ViewListingQuery_viewListing_owner {
-  id: string;
-  email: string;
+export interface UpvoteListingMutation {
+  upvoteListing: boolean;
 }
 
-export interface ViewListingQuery_viewListing {
-  id: string;
-  name: string;
-  description: string;
+export interface UpvoteListingMutationVariables {
+  listingId: string;
   upvotes: number;
-  downvotes: number;
-  pictureUrl: string | null;
-  owner: ViewListingQuery_viewListing_owner;
-}
-
-export interface ViewListingQuery {
-  viewListing: ViewListingQuery_viewListing | null;
-}
-
-export interface ViewListingQueryVariables {
-  id: string;
 }
 
 /* tslint:disable */
@@ -282,21 +313,6 @@ export interface NewMessageSubscription {
 
 export interface NewMessageSubscriptionVariables {
   listingId: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: MeQuery
-// ====================================================
-
-export interface MeQuery_me {
-  email: string;
-}
-
-export interface MeQuery {
-  me: MeQuery_me | null;
 }
 
 /* tslint:disable */
