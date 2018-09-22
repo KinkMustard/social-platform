@@ -103,6 +103,8 @@ input: IUpdateListingInput;
 interface IUpvoteListingOnMutationArguments {
 listingId: string;
 upvotes: number;
+userId: string;
+upvoted?: Array<string> | null;
 }
 
 interface ICreateMessageOnMutationArguments {

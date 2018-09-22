@@ -7,6 +7,8 @@
 
 export interface MeQuery_me {
   email: string;
+  id: string;
+  upvoted: string[];
 }
 
 export interface MeQuery {
@@ -261,6 +263,8 @@ export interface UpvoteListingMutation {
 export interface UpvoteListingMutationVariables {
   listingId: string;
   upvotes: number;
+  userId: string;
+  upvoted: string[];
 }
 
 /* tslint:disable */

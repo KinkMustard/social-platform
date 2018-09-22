@@ -38,9 +38,10 @@ export const resolvers: ResolverMap = {
 
       const user = User.create({
         email,
-        password
+        password,
+        upvoted: ["test"]
       });
-
+      console.log("new user", user);
       await user.save();
 
       if (process.env.NODE_ENV !== "test") {

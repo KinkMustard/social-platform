@@ -6,7 +6,19 @@ import {
   UpvoteListing
 } from "@abb/controller";
 import { RouteComponentProps } from "react-router-dom";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
 // import { Link } from "react-router-dom";
+
+const meQuery = gql`
+  {
+    me {
+      email
+      id
+      upvoted
+    }
+  }
+`;
 
 class C extends React.PureComponent<
   RouteComponentProps<{}> & WithFindListings
@@ -16,6 +28,12 @@ class C extends React.PureComponent<
     return (
       <React.Fragment>
         {loading && <div>...loading</div>}
+        <Query query={meQuery}>
+          {({ data }) => {
+            console.log("this is the data 000", data);
+            return <p>nice</p>;
+          }}
+        </Query>
         {listings.map(l => (
           <div
             style={{
@@ -32,28 +50,39 @@ class C extends React.PureComponent<
             >
               <UpvoteListing>
                 {({ upvoteListing }) => (
-                  <Button
-                    type="primary"
-                    shape="circle"
-                    icon="up"
-                    size="large"
-                    style={{
-                      margin: "auto",
-                      display: "block",
-                      marginTop: 20
+                  <Query query={meQuery}>
+                    {({ data }) => {
+                      console.log("this is the data", data);
+                      console.log("big test", JSON.stringify(data));
+                      return (
+                        <Button
+                          type="primary"
+                          shape="circle"
+                          // disabled={data.upvoted.includes(l.id)}
+                          icon="up"
+                          size="large"
+                          style={{
+                            margin: "auto",
+                            display: "block",
+                            marginTop: 20
+                          }}
+                          onClick={async () => {
+                            let temp = l.upvotes;
+                            temp++;
+                            const result = await upvoteListing({
+                              variables: {
+                                listingId: l.id,
+                                upvotes: temp,
+                                userId: data.id,
+                                upvoted: data.upvoted
+                              }
+                            });
+                            console.log(result);
+                          }}
+                        />
+                      );
                     }}
-                    onClick={async () => {
-                      let temp = l.upvotes;
-                      temp++;
-                      const result = await upvoteListing({
-                        variables: {
-                          listingId: l.id,
-                          upvotes: temp
-                        }
-                      });
-                      console.log(result);
-                    }}
-                  />
+                  </Query>
                 )}
               </UpvoteListing>
               <p

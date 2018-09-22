@@ -21,10 +21,10 @@ export class Listing extends BaseEntity {
   @Column("varchar", { length: 255 })
   description: string;
 
-  @Column("int")
+  @Column("int", { default: 0 })
   upvotes: number;
 
-  @Column("int")
+  @Column("int", { default: 0 })
   downvotes: number;
 
   @Column("uuid")

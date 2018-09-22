@@ -19,7 +19,7 @@ export class Homepage extends React.PureComponent<RouteComponentProps<{}>> {
     return (
       <Query query={meQuery}>
         {({ data }) => {
-          if (data.me) {
+          if (data && data.me) {
             return <Redirect to="/listings" />;
           } else {
             return (
