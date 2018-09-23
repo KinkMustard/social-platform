@@ -265,6 +265,7 @@ export interface UpvoteListingMutationVariables {
   upvotes: number;
   userId: string;
   upvoted: Array<string>;
+  voteScenario: string;
 }
 
 /* tslint:disable */

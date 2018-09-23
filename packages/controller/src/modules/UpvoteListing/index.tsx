@@ -13,12 +13,14 @@ export const upvoteListingMutation = gql`
     $upvotes: Int!
     $userId: String!
     $upvoted: [String!]
+    $voteScenario: String!
   ) {
     upvoteListing(
       listingId: $listingId
       upvotes: $upvotes
       userId: $userId
       upvoted: $upvoted
+      voteScenario: $voteScenario
     )
   }
 `;

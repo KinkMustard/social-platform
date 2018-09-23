@@ -86,7 +86,22 @@ class C extends React.PureComponent<
                                   listingId: l.id,
                                   upvotes: temp,
                                   userId: data.me.id,
-                                  upvoted: data.me.upvoted
+                                  upvoted: data.me.upvoted,
+                                  voteScenario: "upvote"
+                                }
+                              });
+                              console.log("result", result);
+                            } else if (data.me.upvoted.includes(l.id)) {
+                              let temp = l.upvotes;
+                              temp--;
+                              console.log("got this far");
+                              const result = await upvoteListing({
+                                variables: {
+                                  listingId: l.id,
+                                  upvotes: temp,
+                                  userId: data.me.id,
+                                  upvoted: data.me.upvoted,
+                                  voteScenario: "deupvote"
                                 }
                               });
                               console.log("result", result);

@@ -4,6 +4,7 @@ import { getConnection } from "typeorm";
 import { listingCacheKey } from "../../../constants";
 // import { isAuthenticated } from "../../shared/isAuthenticated";
 import { User } from "../../../entity/User";
+import { pull } from "lodash";
 
 // house.png
 // aseq2-house.png
@@ -16,7 +17,7 @@ export const resolvers: ResolverMap = {
   Mutation: {
     upvoteListing: async (
       _,
-      { listingId, upvotes, userId, upvoted },
+      { listingId, upvotes, userId, upvoted, voteScenario },
       { redis }
     ) => {
       // isAuthenticated(session);
@@ -42,7 +43,11 @@ export const resolvers: ResolverMap = {
       await redis.lset(listingCacheKey, idx, JSON.stringify(newListing));
 
       const temp = upvoted;
-      temp.push(listingId);
+      if (voteScenario === "upvote") {
+        temp.push(listingId);
+      } else if (voteScenario === "deupvote") {
+        pull(temp, listingId);
+      }
 
       await User.update(
         { id: userId },

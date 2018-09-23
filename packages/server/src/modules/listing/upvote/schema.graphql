@@ -4,5 +4,6 @@ type Mutation {
     upvotes: Int!
     userId: String!
     upvoted: [String]
+    voteScenario: String!
   ): Boolean!
 }
