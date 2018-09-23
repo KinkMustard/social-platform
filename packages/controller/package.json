@@ -13,8 +13,10 @@
     "refresh:types": "npm run gen:types && npm run build"
   },
   "dependencies": {
-    "graphql": "^0.13.2",
+    "@babel/runtime": "^7.0.0",
+    "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
+    "lerna": "^3.4.0",
     "react": "^16.4.1",
     "react-apollo": "^2.1.6",
     "react-dom": "^16.4.1",

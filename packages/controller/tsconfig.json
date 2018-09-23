@@ -21,7 +21,8 @@
     "baseUrl": "..",
     "paths": {
       "@abb/*": ["./*/src"]
-    }
+    },
+    "typeRoots": ["./dist"]
   },
   "exclude": [
     "node_modules",

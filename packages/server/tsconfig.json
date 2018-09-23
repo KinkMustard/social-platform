@@ -22,7 +22,8 @@
     "baseUrl": "..",
     "paths": {
       "@abb/*": ["./*/src"]
-    }
+    },
+    "typeRoots": ["./dist"]
   },
   "exclude": ["node_modules"],
   "include": ["./src/**/*.tsx", "./src/**/*.ts"]

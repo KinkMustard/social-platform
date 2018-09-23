@@ -1,5 +1,5 @@
 type User {
   id: ID!
   email: String!
-  upvoted: [String!]
+  upvoted: [String]
 }

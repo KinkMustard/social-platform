@@ -8,7 +8,7 @@
 export interface MeQuery_me {
   email: string;
   id: string;
-  upvoted: string[];
+  upvoted: [string];
 }
 
 export interface MeQuery {
