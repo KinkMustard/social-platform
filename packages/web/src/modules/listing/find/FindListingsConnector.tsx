@@ -30,7 +30,6 @@ class C extends React.PureComponent<
         {loading && <div>...loading</div>}
         <Query query={meQuery}>
           {({ data }) => {
-            console.log("this is the data 000", data);
             return <p>nice</p>;
           }}
         </Query>
@@ -52,32 +51,46 @@ class C extends React.PureComponent<
                 {({ upvoteListing }) => (
                   <Query query={meQuery}>
                     {({ data }) => {
-                      console.log("this is the data", data);
-                      console.log("big test", JSON.stringify(data));
+                      console.log("listing", l);
+                      console.log("meQuery data", data);
+                      if (!data.me) {
+                        return <div>...loading</div>;
+                      }
                       return (
                         <Button
-                          type="primary"
                           shape="circle"
-                          // disabled={data.upvoted.includes(l.id)}
                           icon="up"
                           size="large"
-                          style={{
-                            margin: "auto",
-                            display: "block",
-                            marginTop: 20
-                          }}
-                          onClick={async () => {
-                            let temp = l.upvotes;
-                            temp++;
-                            const result = await upvoteListing({
-                              variables: {
-                                listingId: l.id,
-                                upvotes: temp,
-                                userId: data.id,
-                                upvoted: data.upvoted
+                          style={
+                            data.me.upvoted.includes(l.id)
+                              ? {
+                                margin: "auto",
+                                display: "block",
+                                marginTop: 20,
+                                backgroundColor: "#40a9ff"
                               }
-                            });
-                            console.log(result);
+                              : {
+                                margin: "auto",
+                                display: "block",
+                                marginTop: 20,
+                                backgroundColor: "#e6f7ff"
+                              }
+                          }
+                          onClick={async () => {
+                            if (!data.me.upvoted.includes(l.id)) {
+                              let temp = l.upvotes;
+                              temp++;
+                              console.log("got this far");
+                              const result = await upvoteListing({
+                                variables: {
+                                  listingId: l.id,
+                                  upvotes: temp,
+                                  userId: data.me.id,
+                                  upvoted: data.me.upvoted
+                                }
+                              });
+                              console.log("result", result);
+                            }
                           }}
                         />
                       );

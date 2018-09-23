@@ -26,7 +26,7 @@ export class User extends BaseEntity {
   @Column("boolean", { default: false })
   forgotPasswordLocked: boolean;
 
-  @Column("text")
+  @Column({ type: "text", array: true })
   upvoted: string[];
 
   @OneToMany(() => Listing, listing => listing.user)

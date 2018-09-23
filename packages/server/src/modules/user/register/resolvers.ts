@@ -39,7 +39,7 @@ export const resolvers: ResolverMap = {
       const user = User.create({
         email,
         password,
-        upvoted: ["test"]
+        upvoted: ["test", "end me", "help"]
       });
       console.log("new user", user);
       await user.save();

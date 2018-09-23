@@ -44,14 +44,12 @@ export const resolvers: ResolverMap = {
       const temp = upvoted;
       temp.push(listingId);
 
-      const updateUserPromise = User.update(
+      await User.update(
         { id: userId },
         {
           upvoted: temp
         }
       );
-
-      await Promise.all([updateUserPromise]);
 
       return true;
     }

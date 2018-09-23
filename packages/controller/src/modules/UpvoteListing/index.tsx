@@ -8,8 +8,18 @@ import {
 } from "../../schemaTypes";
 
 export const upvoteListingMutation = gql`
-  mutation UpvoteListingMutation($listingId: String!, $upvotes: Int!) {
-    upvoteListing(listingId: $listingId, upvotes: $upvotes)
+  mutation UpvoteListingMutation(
+    $listingId: String!
+    $upvotes: Int!
+    $userId: String!
+    $upvoted: [String!]
+  ) {
+    upvoteListing(
+      listingId: $listingId
+      upvotes: $upvotes
+      userId: $userId
+      upvoted: $upvoted
+    )
   }
 `;
 
@@ -32,6 +42,7 @@ export class UpvoteListing extends React.PureComponent<Props> {
         mutation={upvoteListingMutation}
       >
         {mutate => {
+          console.log("got this far 2");
           return children({
             upvoteListing: mutate
           });

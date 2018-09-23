@@ -6,9 +6,9 @@ import { ChangePasswordView } from "./ui/ChangePasswordView";
 
 export class ChangePasswordConnector extends React.PureComponent<
   RouteComponentProps<{
-    key: string;
+  key: string;
   }>
-> {
+  > {
   onFinish = () => {
     this.props.history.push("/login");
   };
@@ -22,11 +22,11 @@ export class ChangePasswordConnector extends React.PureComponent<
     console.log(key);
     return (
       <ChangePasswordController>
-        {({ submit }) => (
+        {({ submit }: { submit: any }) => (
           <ChangePasswordView
             onFinish={this.onFinish}
             token={key}
-            submit={submit}
+            submit={submit as any}
           />
         )}
       </ChangePasswordController>
