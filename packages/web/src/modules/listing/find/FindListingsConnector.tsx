@@ -24,7 +24,7 @@ class C extends React.PureComponent<
   RouteComponentProps<{}> & WithFindListings
   > {
   render() {
-    const { listings, loading } = this.props;
+    const { listings, loading, refetchListings } = this.props;
     return (
       <React.Fragment>
         {loading && <div>...loading</div>}
@@ -50,7 +50,7 @@ class C extends React.PureComponent<
               <UpvoteListing>
                 {({ upvoteListing }) => (
                   <Query query={meQuery}>
-                    {({ data }) => {
+                    {({ data, refetch }) => {
                       console.log("listing", l);
                       console.log("meQuery data", data);
                       if (!data.me) {
@@ -91,6 +91,8 @@ class C extends React.PureComponent<
                                 }
                               });
                               console.log("result", result);
+                              refetch();
+                              refetchListings();
                             } else if (data.me.upvoted.includes(l.id)) {
                               let temp = l.upvotes;
                               temp--;
@@ -105,6 +107,8 @@ class C extends React.PureComponent<
                                 }
                               });
                               console.log("result", result);
+                              refetch();
+                              refetchListings();
                             }
                           }}
                         />

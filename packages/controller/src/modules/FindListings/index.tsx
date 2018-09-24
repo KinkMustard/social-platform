@@ -27,6 +27,7 @@ export const findListingsQuery = gql`
 export interface WithFindListings {
   listings: FindListingsQuery_findListings[];
   loading: boolean;
+  refetchListings: any;
 }
 
 export const withFindListings = graphql<
@@ -37,14 +38,17 @@ WithFindListings
 >(findListingsQuery, {
   props: ({ data }) => {
     let listings: FindListingsQuery_findListings[] = [];
+    let refetchListings: any;
 
     if (data && !data.loading && data.findListings) {
       listings = data.findListings;
+      refetchListings = data.refetch;
     }
 
     return {
       listings,
-      loading: data ? data.loading : false
+      loading: data ? data.loading : false,
+      refetchListings
     };
   }
 });
