@@ -16,6 +16,7 @@ const meQuery = gql`
       email
       id
       upvoted
+      downvoted
     }
   }
 `;
@@ -51,91 +52,174 @@ class C extends React.PureComponent<
                 {({ upvoteListing }) => (
                   <Query query={meQuery}>
                     {({ data, refetch }) => {
-                      console.log("listing", l);
-                      console.log("meQuery data", data);
                       if (!data.me) {
                         return <div>...loading</div>;
                       }
                       return (
-                        <Button
-                          shape="circle"
-                          icon="up"
-                          size="large"
-                          style={
-                            data.me.upvoted.includes(l.id)
-                              ? {
-                                margin: "auto",
-                                display: "block",
-                                marginTop: 20,
-                                backgroundColor: "#40a9ff"
-                              }
-                              : {
-                                margin: "auto",
-                                display: "block",
-                                marginTop: 20,
-                                backgroundColor: "#e6f7ff"
-                              }
-                          }
-                          onClick={async () => {
-                            if (!data.me.upvoted.includes(l.id)) {
-                              let temp = l.upvotes;
-                              temp++;
-                              console.log("got this far");
-                              const result = await upvoteListing({
-                                variables: {
-                                  listingId: l.id,
-                                  upvotes: temp,
-                                  userId: data.me.id,
-                                  upvoted: data.me.upvoted,
-                                  voteScenario: "upvote"
+                        <React.Fragment>
+                          <Button
+                            shape="circle"
+                            icon="up"
+                            size="large"
+                            style={
+                              data.me.upvoted.includes(l.id)
+                                ? {
+                                  margin: "auto",
+                                  display: "block",
+                                  marginTop: 20,
+                                  backgroundColor: "#40a9ff"
                                 }
-                              });
-                              console.log("result", result);
-                              refetch();
-                              refetchListings();
-                            } else if (data.me.upvoted.includes(l.id)) {
-                              let temp = l.upvotes;
-                              temp--;
-                              console.log("got this far");
-                              const result = await upvoteListing({
-                                variables: {
-                                  listingId: l.id,
-                                  upvotes: temp,
-                                  userId: data.me.id,
-                                  upvoted: data.me.upvoted,
-                                  voteScenario: "deupvote"
+                                : {
+                                  margin: "auto",
+                                  display: "block",
+                                  marginTop: 20,
+                                  backgroundColor: "#e6f7ff"
                                 }
-                              });
-                              console.log("result", result);
-                              refetch();
-                              refetchListings();
                             }
-                          }}
-                        />
+                            onClick={async () => {
+                              if (
+                                !data.me.upvoted.includes(l.id) &&
+                                data.me.downvoted.includes(l.id)
+                              ) {
+                                let temp = l.upvotes;
+                                temp++;
+                                const result = await upvoteListing({
+                                  variables: {
+                                    listingId: l.id,
+                                    upvotes: temp,
+                                    userId: data.me.id,
+                                    upvoted: data.me.upvoted,
+                                    downvoted: data.me.downvoted,
+                                    voteScenario: "upvote-while-downvoted"
+                                  }
+                                });
+                                console.log("result", result);
+                                refetch();
+                                refetchListings();
+                              } else if (!data.me.upvoted.includes(l.id)) {
+                                let temp = l.upvotes;
+                                temp++;
+                                const result = await upvoteListing({
+                                  variables: {
+                                    listingId: l.id,
+                                    upvotes: temp,
+                                    userId: data.me.id,
+                                    upvoted: data.me.upvoted,
+                                    downvoted: data.me.downvoted,
+                                    voteScenario: "upvote"
+                                  }
+                                });
+                                console.log("result", result);
+                                refetch();
+                                refetchListings();
+                              } else if (data.me.upvoted.includes(l.id)) {
+                                let temp = l.upvotes;
+                                temp--;
+                                const result = await upvoteListing({
+                                  variables: {
+                                    listingId: l.id,
+                                    upvotes: temp,
+                                    userId: data.me.id,
+                                    upvoted: data.me.upvoted,
+                                    downvoted: data.me.downvoted,
+                                    voteScenario: "deupvote"
+                                  }
+                                });
+                                console.log("result", result);
+                                refetch();
+                                refetchListings();
+                              }
+                            }}
+                          />
+                          <p
+                            style={{
+                              fontSize: 18,
+                              marginTop: 10,
+                              marginBottom: 10
+                            }}
+                          >
+                            {l.upvotes - l.downvotes}
+                          </p>
+                          <Button
+                            shape="circle"
+                            icon="up"
+                            size="large"
+                            style={
+                              data.me.downvoted.includes(l.id)
+                                ? {
+                                  margin: "auto",
+                                  display: "block",
+                                  marginTop: 20,
+                                  backgroundColor: "#40a9ff"
+                                }
+                                : {
+                                  margin: "auto",
+                                  display: "block",
+                                  marginTop: 20,
+                                  backgroundColor: "#e6f7ff"
+                                }
+                            }
+                            onClick={async () => {
+                              if (
+                                !data.me.downvoted.includes(l.id) &&
+                                data.me.upvoted.includes(l.id)
+                              ) {
+                                let temp = l.downvotes;
+                                temp--;
+                                const result = await upvoteListing({
+                                  variables: {
+                                    listingId: l.id,
+                                    upvotes: temp,
+                                    userId: data.me.id,
+                                    upvoted: data.me.upvoted,
+                                    downvoted: data.me.downvoted,
+                                    voteScenario: "downvote-while-upvoted"
+                                  }
+                                });
+                                console.log("result", result);
+                                refetch();
+                                refetchListings();
+                              } else if (!data.me.downvoted.includes(l.id)) {
+                                let temp = l.downvotes;
+                                temp--;
+                                const result = await upvoteListing({
+                                  variables: {
+                                    listingId: l.id,
+                                    upvotes: temp,
+                                    userId: data.me.id,
+                                    upvoted: data.me.upvoted,
+                                    downvoted: data.me.downvoted,
+                                    voteScenario: "downvote"
+                                  }
+                                });
+                                console.log("result", result);
+                                refetch();
+                                refetchListings();
+                              } else if (data.me.upvoted.includes(l.id)) {
+                                let temp = l.downvotes;
+                                temp++;
+                                const result = await upvoteListing({
+                                  variables: {
+                                    listingId: l.id,
+                                    upvotes: temp,
+                                    userId: data.me.id,
+                                    upvoted: data.me.upvoted,
+                                    downvoted: data.me.downvoted,
+                                    voteScenario: "dedownvote"
+                                  }
+                                });
+                                console.log("result", result);
+                                refetch();
+                                refetchListings();
+                              }
+                            }}
+                          />
+                        </React.Fragment>
                       );
                     }}
                   </Query>
                 )}
               </UpvoteListing>
-              <p
-                style={{
-                  fontSize: 18,
-                  marginTop: 10,
-                  marginBottom: 10
-                }}
-              >
-                {l.upvotes - l.downvotes}
-              </p>
-              <Button
-                type="danger"
-                shape="circle"
-                icon="down"
-                size="large"
-                style={{
-                  margin: "auto",
-                  display: "block"
-                }}
-              />
             </div>
             <Card
               key={`${l.id}-card`}

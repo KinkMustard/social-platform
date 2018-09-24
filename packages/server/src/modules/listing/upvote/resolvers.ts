@@ -17,7 +17,7 @@ export const resolvers: ResolverMap = {
   Mutation: {
     upvoteListing: async (
       _,
-      { listingId, upvotes, userId, upvoted, voteScenario },
+      { listingId, upvotes, userId, upvoted, downvoted, voteScenario },
       { redis }
     ) => {
       // isAuthenticated(session);
@@ -42,17 +42,29 @@ export const resolvers: ResolverMap = {
       );
       await redis.lset(listingCacheKey, idx, JSON.stringify(newListing));
 
-      const temp = upvoted;
+      const tempUpvoted = upvoted;
+      const tempDownvoted = downvoted;
       if (voteScenario === "upvote") {
-        temp.push(listingId);
+        tempUpvoted.push(listingId);
       } else if (voteScenario === "deupvote") {
-        pull(temp, listingId);
+        pull(tempUpvoted, listingId);
+      } else if (voteScenario === "downvote") {
+        tempDownvoted.push(listingId);
+      } else if (voteScenario === "dedownvote") {
+        pull(tempDownvoted, listingId);
+      } else if (voteScenario === "downvote-while-upvoted") {
+        pull(tempUpvoted, listingId);
+        tempDownvoted.push(listingId);
+      } else if (voteScenario === "upvote-while-downvoted") {
+        pull(tempDownvoted, listingId);
+        tempUpvoted.push(listingId);
       }
 
       await User.update(
         { id: userId },
         {
-          upvoted: temp
+          upvoted: tempUpvoted,
+          downvoted: tempDownvoted
         }
       );
 
