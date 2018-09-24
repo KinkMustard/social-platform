@@ -29,6 +29,9 @@ export class User extends BaseEntity {
   @Column({ type: "text", array: true })
   upvoted: string[];
 
+  @Column({ type: "text", array: true })
+  downvoted: string[];
+
   @OneToMany(() => Listing, listing => listing.user)
   listings: Listing[];
 

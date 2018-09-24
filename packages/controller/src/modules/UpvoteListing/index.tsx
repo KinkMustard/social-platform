@@ -13,6 +13,7 @@ export const upvoteListingMutation = gql`
     $upvotes: Int!
     $userId: String!
     $upvoted: [String!]
+    $downvoted: [String!]
     $voteScenario: String!
   ) {
     upvoteListing(
@@ -20,6 +21,7 @@ export const upvoteListingMutation = gql`
       upvotes: $upvotes
       userId: $userId
       upvoted: $upvoted
+      downvoted: $downvoted
       voteScenario: $voteScenario
     )
   }
