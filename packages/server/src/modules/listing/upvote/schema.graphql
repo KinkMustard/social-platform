@@ -2,6 +2,7 @@ type Mutation {
   upvoteListing(
     listingId: String!
     upvotes: Int!
+    downvotes: Int!
     userId: String!
     upvoted: [String]
     downvoted: [String]

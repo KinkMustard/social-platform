@@ -103,6 +103,7 @@ declare namespace GQL {
   interface IUpvoteListingOnMutationArguments {
     listingId: string;
     upvotes: number;
+    downvotes: number;
     userId: string;
     upvoted?: Array<string> | null;
     downvoted?: Array<string> | null;

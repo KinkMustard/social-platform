@@ -264,6 +264,7 @@ export interface UpvoteListingMutation {
 export interface UpvoteListingMutationVariables {
   listingId: string;
   upvotes: number;
+  downvotes: number;
   userId: string;
   upvoted: Array<string>;
   downvoted: Array<string>;

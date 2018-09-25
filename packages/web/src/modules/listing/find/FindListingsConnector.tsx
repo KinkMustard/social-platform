@@ -81,12 +81,15 @@ class C extends React.PureComponent<
                                 !data.me.upvoted.includes(l.id) &&
                                 data.me.downvoted.includes(l.id)
                               ) {
-                                let temp = l.upvotes;
-                                temp++;
+                                let tempUpvotes = l.upvotes;
+                                tempUpvotes++;
+                                let tempDownvotes = l.downvotes;
+                                tempDownvotes--;
                                 const result = await upvoteListing({
                                   variables: {
                                     listingId: l.id,
-                                    upvotes: temp,
+                                    upvotes: tempUpvotes,
+                                    downvotes: tempDownvotes,
                                     userId: data.me.id,
                                     upvoted: data.me.upvoted,
                                     downvoted: data.me.downvoted,
@@ -103,6 +106,7 @@ class C extends React.PureComponent<
                                   variables: {
                                     listingId: l.id,
                                     upvotes: temp,
+                                    downvotes: l.downvotes,
                                     userId: data.me.id,
                                     upvoted: data.me.upvoted,
                                     downvoted: data.me.downvoted,
@@ -119,6 +123,7 @@ class C extends React.PureComponent<
                                   variables: {
                                     listingId: l.id,
                                     upvotes: temp,
+                                    downvotes: l.downvotes,
                                     userId: data.me.id,
                                     upvoted: data.me.upvoted,
                                     downvoted: data.me.downvoted,
@@ -142,7 +147,7 @@ class C extends React.PureComponent<
                           </p>
                           <Button
                             shape="circle"
-                            icon="up"
+                            icon="down"
                             size="large"
                             style={
                               data.me.downvoted.includes(l.id)
@@ -164,12 +169,15 @@ class C extends React.PureComponent<
                                 !data.me.downvoted.includes(l.id) &&
                                 data.me.upvoted.includes(l.id)
                               ) {
-                                let temp = l.downvotes;
-                                temp--;
+                                let tempDownvotes = l.downvotes;
+                                tempDownvotes++;
+                                let tempUpvotes = l.upvotes;
+                                tempUpvotes--;
                                 const result = await upvoteListing({
                                   variables: {
                                     listingId: l.id,
-                                    upvotes: temp,
+                                    upvotes: tempUpvotes,
+                                    downvotes: tempDownvotes,
                                     userId: data.me.id,
                                     upvoted: data.me.upvoted,
                                     downvoted: data.me.downvoted,
@@ -181,11 +189,12 @@ class C extends React.PureComponent<
                                 refetchListings();
                               } else if (!data.me.downvoted.includes(l.id)) {
                                 let temp = l.downvotes;
-                                temp--;
+                                temp++;
                                 const result = await upvoteListing({
                                   variables: {
                                     listingId: l.id,
-                                    upvotes: temp,
+                                    upvotes: l.upvotes,
+                                    downvotes: temp,
                                     userId: data.me.id,
                                     upvoted: data.me.upvoted,
                                     downvoted: data.me.downvoted,
@@ -195,13 +204,14 @@ class C extends React.PureComponent<
                                 console.log("result", result);
                                 refetch();
                                 refetchListings();
-                              } else if (data.me.upvoted.includes(l.id)) {
+                              } else if (data.me.downvoted.includes(l.id)) {
                                 let temp = l.downvotes;
-                                temp++;
+                                temp--;
                                 const result = await upvoteListing({
                                   variables: {
                                     listingId: l.id,
-                                    upvotes: temp,
+                                    upvotes: l.upvotes,
+                                    downvotes: temp,
                                     userId: data.me.id,
                                     upvoted: data.me.upvoted,
                                     downvoted: data.me.downvoted,

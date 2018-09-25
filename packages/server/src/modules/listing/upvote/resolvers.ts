@@ -17,7 +17,15 @@ export const resolvers: ResolverMap = {
   Mutation: {
     upvoteListing: async (
       _,
-      { listingId, upvotes, userId, upvoted, downvoted, voteScenario },
+      {
+        listingId,
+        upvotes,
+        downvotes,
+        userId,
+        upvoted,
+        downvoted,
+        voteScenario
+      },
       { redis }
     ) => {
       // isAuthenticated(session);
@@ -31,7 +39,7 @@ export const resolvers: ResolverMap = {
       } = await getConnection()
         .createQueryBuilder()
         .update(Listing)
-        .set({ upvotes })
+        .set({ upvotes, downvotes })
         .where("id = :id", { id: listingId })
         .returning("*")
         .execute();
