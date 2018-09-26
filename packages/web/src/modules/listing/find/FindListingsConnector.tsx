@@ -29,23 +29,21 @@ class C extends React.PureComponent<
     return (
       <React.Fragment>
         {loading && <div>...loading</div>}
-        <Query query={meQuery}>
-          {({ data }) => {
-            return <p>nice</p>;
-          }}
-        </Query>
         {listings.map(l => (
           <div
             style={{
               display: "flex",
-              margin: "auto"
+              margin: "auto",
+              marginLeft: "20vw",
+              marginRight: "20vw"
             }}
           >
             <div
               style={{
                 width: 100,
                 backgroundColor: "#fafafa",
-                textAlign: "center"
+                textAlign: "center",
+                height: 695
               }}
             >
               <UpvoteListing>
@@ -67,7 +65,7 @@ class C extends React.PureComponent<
                                   margin: "auto",
                                   display: "block",
                                   marginTop: 20,
-                                  backgroundColor: "#40a9ff"
+                                  backgroundColor: "#69c0ff"
                                 }
                                 : {
                                   margin: "auto",
@@ -154,14 +152,12 @@ class C extends React.PureComponent<
                                 ? {
                                   margin: "auto",
                                   display: "block",
-                                  marginTop: 20,
-                                  backgroundColor: "#40a9ff"
+                                  backgroundColor: "#ffc069"
                                 }
                                 : {
                                   margin: "auto",
                                   display: "block",
-                                  marginTop: 20,
-                                  backgroundColor: "#e6f7ff"
+                                  backgroundColor: "#fff7e6"
                                 }
                             }
                             onClick={async () => {
@@ -234,7 +230,7 @@ class C extends React.PureComponent<
             <Card
               key={`${l.id}-card`}
               hoverable={true}
-              style={{ width: 640, marginBottom: 10 }}
+              style={{ width: 640, height: 695, marginBottom: 10 }}
               onClick={() => {
                 this.props.history.push(`/listing/${l.id}`);
               }}
