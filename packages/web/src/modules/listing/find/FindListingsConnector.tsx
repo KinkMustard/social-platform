@@ -53,6 +53,8 @@ class C extends React.PureComponent<
                       if (!data.me) {
                         return <div>...loading</div>;
                       }
+                      console.log("data", data);
+                      console.log("l", l);
                       return (
                         <React.Fragment>
                           <Button
