@@ -12,6 +12,7 @@ export const findListingsQuery = gql`
     findListings {
       id
       name
+      datePosted
       description
       upvotes
       downvotes

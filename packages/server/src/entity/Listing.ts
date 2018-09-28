@@ -15,6 +15,9 @@ export class Listing extends BaseEntity {
   @Column("varchar", { length: 100 })
   name: string;
 
+  @Column("int")
+  datePosted: number;
+
   @Column("text", { nullable: true })
   pictureUrl: string;
 

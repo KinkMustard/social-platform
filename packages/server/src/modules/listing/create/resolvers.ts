@@ -2,6 +2,7 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { Listing } from "../../../entity/Listing";
 import { processUpload } from "../shared/processUpload";
 import { listingCacheKey } from "../../../constants";
+import * as getTime from "date-fns/get_time";
 // import { isAuthenticated } from "../../shared/isAuthenticated";
 
 // house.png
@@ -23,6 +24,7 @@ export const resolvers: ResolverMap = {
 
       const listing = await Listing.create({
         ...data,
+        datePosted: getTime(new Date()),
         pictureUrl,
         userId: session.userId
       }).save();

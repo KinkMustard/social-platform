@@ -20,6 +20,9 @@ export class User extends BaseEntity {
   @Column("text")
   password: string;
 
+  @Column("int")
+  dateJoined: number;
+
   @Column("boolean", { default: false })
   confirmed: boolean;
 

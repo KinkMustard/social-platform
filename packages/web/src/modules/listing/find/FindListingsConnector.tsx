@@ -261,7 +261,10 @@ class C extends React.PureComponent<
                   }}
                 />
               )}
-              <p style={{ fontSize: 18, display: "inline" }}>{l.description}</p>
+              <p style={{ fontSize: 18, display: "inline" }}>
+                {l.description}
+                {l.datePosted}
+              </p>
             </Card>
           </div>
         ))}
