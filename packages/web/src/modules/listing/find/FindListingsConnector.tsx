@@ -295,7 +295,20 @@ class C extends React.PureComponent<
               onOk={this.handleOk}
               onCancel={this.handleCancel}
             >
-              <p>Some contents...</p>
+              {l.pictureUrl && (
+                <img
+                  alt="example"
+                  src={l.pictureUrl}
+                  style={{
+                    display: "block",
+                    maxWidth: 590,
+                    maxHeight: 480,
+                    width: "auto",
+                    height: "auto",
+                    margin: "auto"
+                  }}
+                />
+              )}
               <p>Some contents...</p>
               <p>Some contents...</p>
             </Modal>
