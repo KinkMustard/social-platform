@@ -24,7 +24,7 @@ export const resolvers: ResolverMap = {
 
       const listing = await Listing.create({
         ...data,
-        datePosted: getTime(new Date()),
+        datePosted: String(getTime(new Date())),
         pictureUrl,
         userId: session.userId
       }).save();

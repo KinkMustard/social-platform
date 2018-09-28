@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, Icon, Button } from "antd";
+import { Card, Icon, Button, Modal } from "antd";
 import {
   withFindListings,
   WithFindListings,
@@ -8,6 +8,7 @@ import {
 import { RouteComponentProps } from "react-router-dom";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 // import { Link } from "react-router-dom";
 
 const meQuery = gql`
@@ -24,6 +25,27 @@ const meQuery = gql`
 class C extends React.PureComponent<
   RouteComponentProps<{}> & WithFindListings
   > {
+  state = { visible: false };
+
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = (e: any) => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = (e: any) => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
   render() {
     const { listings, loading, refetchListings } = this.props;
     return (
@@ -234,7 +256,8 @@ class C extends React.PureComponent<
               hoverable={true}
               style={{ width: 640, height: 695, marginBottom: 10 }}
               onClick={() => {
-                this.props.history.push(`/listing/${l.id}`);
+                // this.props.history.push(`/listing/${l.id}`);
+                this.showModal();
               }}
               actions={[
                 <Icon type="setting" key="1" />,
@@ -263,9 +286,19 @@ class C extends React.PureComponent<
               )}
               <p style={{ fontSize: 18, display: "inline" }}>
                 {l.description}
-                {l.datePosted}
+                posted {distanceInWordsToNow(Number(l.datePosted))} ago
               </p>
             </Card>
+            <Modal
+              title="Basic Modal"
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+            >
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+            </Modal>
           </div>
         ))}
       </React.Fragment>

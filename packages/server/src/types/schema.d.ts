@@ -47,6 +47,7 @@ declare namespace GQL {
     __typename: "Listing";
     id: string;
     name: string;
+    datePosted: string;
     description: string;
     upvotes: number;
     downvotes: number;

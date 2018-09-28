@@ -6,7 +6,7 @@ import { ListingFormValues, ListingForm } from "../shared/ListingForm";
 
 class C extends React.PureComponent<
   RouteComponentProps<{}> & WithCreateListing
-> {
+  > {
   submit = async (
     values: ListingFormValues,
     { setSubmitting }: FormikActions<ListingFormValues>

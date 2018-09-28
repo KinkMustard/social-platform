@@ -10,6 +10,7 @@ const FormItem = AntForm.Item;
 export interface ListingFormValues {
   pictureUrl: string | null;
   picture: ImageFile | null;
+  datePosted: string;
   name: string;
   description: string;
   upvotes: number;
@@ -34,6 +35,7 @@ const pages = [<Page1 />];
 export const defaultListingFormValues = {
   pictureUrl: null,
   picture: null,
+  datePosted: "",
   name: "",
   description: "",
   upvotes: 0,

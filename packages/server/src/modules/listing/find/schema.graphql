@@ -1,6 +1,7 @@
 type Listing {
   id: ID!
   name: String!
+  datePosted: String!
   description: String!
   upvotes: Int!
   downvotes: Int!

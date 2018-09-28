@@ -6,7 +6,7 @@ import { formatYupError } from "../../../utils/formatYupError";
 import { duplicateEmail } from "./errorMessages";
 import { createConfirmEmailLink } from "./createConfirmEmailLink";
 import { sendEmail } from "../../../utils/sendEmail";
-import * as getTime from 'date-fns/get_time';
+import * as getTime from "date-fns/get_time";
 
 export const resolvers: ResolverMap = {
   Mutation: {
@@ -40,7 +40,7 @@ export const resolvers: ResolverMap = {
       const user = User.create({
         email,
         password,
-        dateJoined: getTime(new Date()),
+        dateJoined: String(getTime(new Date())),
         upvoted: ["test", "end me", "help"],
         downvoted: ["test", "end me", "help"]
       });

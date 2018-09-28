@@ -73,7 +73,7 @@ export interface FindListingsQuery_findListings_owner {
 export interface FindListingsQuery_findListings {
   id: string;
   name: string;
-  datePosted: number;
+  datePosted: string;
   description: string;
   upvotes: number;
   downvotes: number;
@@ -188,7 +188,7 @@ export interface ViewListingQuery_viewListing_owner {
 export interface ViewListingQuery_viewListing {
   id: string;
   name: string;
-  datePosted: number;
+  datePosted: string;
   description: string;
   upvotes: number;
   downvotes: number;
