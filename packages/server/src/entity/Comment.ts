@@ -8,13 +8,16 @@ import {
 import { User } from "./User";
 import { Listing } from "./Listing";
 
-@Entity("messages")
-export class Message extends BaseEntity {
+@Entity("comments")
+export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column("text")
   text: string;
+
+  @Column("varchar", { length: 20 })
+  datePosted: string;
 
   @Column("uuid")
   userId: string;
