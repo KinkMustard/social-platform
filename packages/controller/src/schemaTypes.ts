@@ -119,6 +119,21 @@ export interface CreateMessageMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateMessageMutation
+// ====================================================
+
+export interface CreateCommentMutation {
+  createComment: boolean;
+}
+
+export interface CreateCommentMutationVariables {
+  comment: CommentInput;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: LoginMutation
 // ====================================================
 
@@ -202,6 +217,36 @@ export interface ViewListingQuery {
 
 export interface ViewListingQueryVariables {
   id: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: ViewCommentQuery
+// ====================================================
+
+export interface ViewCommentsQuery_viewComments_user {
+  id: string;
+  email: string;
+}
+
+export interface ViewCommentsQuery_Comments {
+  id: string;
+  text: string;
+  datePosted: string;
+  listingId: string;
+  upvotes: number;
+  downvotes: number;
+  user: ViewCommentsQuery_viewComments_user;
+}
+
+export interface ViewCommentsQuery {
+  comments: ViewCommentsQuery_Comments[] | null;
+}
+
+export interface ViewCommentQueryVariables {
+  listingId: string;
 }
 
 /* tslint:disable */
@@ -334,6 +379,12 @@ export interface NewMessageSubscriptionVariables {
 
 //
 export interface MessageInput {
+  text: string;
+  listingId: string;
+}
+
+//
+export interface CommentInput {
   text: string;
   listingId: string;
 }

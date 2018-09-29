@@ -3,14 +3,14 @@ import * as React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import {
-  ViewListingQuery_viewListing,
-  ViewListingQuery,
-  ViewListingQueryVariables
+  ViewCommentsQuery_Comments,
+  ViewCommentsQuery,
+  ViewCommentQueryVariables
 } from "../../schemaTypes";
 
-export const viewListingQuery = gql`
-  query ViewListingQuery($id: String!) {
-    viewListing(id: $id) {
+export const viewCommentsQuery = gql`
+  query ViewCommentsQuery($id: String!) {
+    viewComments(id: $id) {
       id
       name
       description
@@ -25,33 +25,33 @@ export const viewListingQuery = gql`
   }
 `;
 
-export interface WithViewListing {
-  listing: ViewListingQuery_viewListing | null;
+export interface WithViewComments {
+  comments: ViewCommentsQuery_Comments[] | null;
   loading: boolean;
 }
 
 interface Props {
   listingId: string;
-  children: (data: WithViewListing) => JSX.Element | null;
+  children: (data: WithViewComments) => JSX.Element | null;
 }
 
-export class ViewListing extends React.PureComponent<Props> {
+export class ViewComments extends React.PureComponent<Props> {
   render() {
     const { children, listingId } = this.props;
     return (
-      <Query<ViewListingQuery, ViewListingQueryVariables>
-        query={viewListingQuery}
-        variables={{ id: listingId }}
+      <Query<ViewCommentsQuery, ViewCommentQueryVariables>
+        query={viewCommentsQuery}
+        variables={{ listingId }}
       >
         {({ data, loading }) => {
-          let listing: ViewListingQuery_viewListing | null = null;
+          let comments: ViewCommentsQuery_Comments[] | null = null;
 
-          if (data && data.viewListing) {
-            listing = data.viewListing;
+          if (data && data.comments) {
+            comments = data.comments;
           }
 
           return children({
-            listing,
+            comments,
             loading
           });
         }}

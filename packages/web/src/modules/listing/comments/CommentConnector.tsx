@@ -1,9 +1,9 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { ViewMessages } from "@abb/controller";
+import { ViewComments } from "@abb/controller";
 import { InputBar } from "./CommentInputBar";
 
-export class MessageConnector extends React.PureComponent<
+export class CommentConnector extends React.PureComponent<
   RouteComponentProps<{
   listingId: string;
   }>
@@ -17,19 +17,18 @@ export class MessageConnector extends React.PureComponent<
       }
     } = this.props;
     return (
-      <ViewMessages listingId={listingId}>
-        {({ loading, messages, subscribe }) => {
+      <ViewComments listingId={listingId}>
+        {({ loading, comments }) => {
           if (loading) {
             return <div>...loading</div>;
           }
-
-          if (!this.unsubscribe) {
-            this.unsubscribe = subscribe();
+          if (!comments) {
+            return <div>no comments yet</div>;
           }
 
           return (
             <div>
-              {messages.map((m, i) => (
+              {comments.map((m, i) => (
                 <div key={`${i}-lm`}>{m.text}</div>
               ))}
               <InputBar listingId={listingId} />
@@ -37,7 +36,7 @@ export class MessageConnector extends React.PureComponent<
             </div>
           );
         }}
-      </ViewMessages>
+      </ViewComments>
     );
   }
 }

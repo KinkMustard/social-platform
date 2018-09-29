@@ -12,12 +12,12 @@ export const viewListingQuery = gql`
   query ViewListingQuery($id: String!) {
     viewListing(id: $id) {
       id
-      name
-      description
+      text
+      datePosted
+      listingId
       upvotes
       downvotes
-      pictureUrl
-      owner {
+      user {
         id
         email
       }

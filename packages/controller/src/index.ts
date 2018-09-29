@@ -14,3 +14,5 @@ export * from "./modules/CreateMessage";
 export * from "./modules/UpdateListing";
 export * from "./modules/SearchListings";
 export * from "./modules/UpvoteListing";
+export * from "./modules/ViewComments";
+export * from "./modules/CreateComment";

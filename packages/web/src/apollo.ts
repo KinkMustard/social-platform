@@ -5,6 +5,7 @@ import { split } from "apollo-link";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 
+console.log("react app url", process.env.REACT_APP_SERVER_URL);
 const httpLink = createUploadLink({
   uri: process.env.REACT_APP_SERVER_URL,
   credentials: "include"

@@ -1,9 +1,11 @@
 type Comment {
+  id: String!
   text: String!
-  user: User!
+  datePosted: String!
+  listingId: String!
   upvotes: Int!
   downvotes: Int!
-  listingId: String!
+  user: User!
 }
 
 type Query {
