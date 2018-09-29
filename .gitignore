@@ -9,9 +9,9 @@ build/
 temp/
 dist/
 
-.env
-.env.*
-!.env.example
+# .env
+# .env.*
+# !.env.example
 
 dump.rdb
 *.log
