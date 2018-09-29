@@ -19,6 +19,12 @@ export class Comment extends BaseEntity {
   @Column("varchar", { length: 20 })
   datePosted: string;
 
+  @Column("int", { default: 0 })
+  upvotes: number;
+
+  @Column("int", { default: 0 })
+  downvotes: number;
+
   @Column("uuid")
   userId: string;
 
