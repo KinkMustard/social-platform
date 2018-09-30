@@ -259,8 +259,8 @@ class C extends React.PureComponent<
               style={{ width: 640, height: 695, marginBottom: 10 }}
               onClick={() => {
                 // this.props.history.push(`/listing/${l.id}`);
-                this.props.history.push(`/listings/${l.id}/comments`);
-                this.showModal();
+                this.props.history.push(`/listings/${l.id}/modal`);
+                // this.showModal();
               }}
               actions={[
                 <Icon type="setting" key="1" />,

@@ -12,12 +12,12 @@ export const viewCommentsQuery = gql`
   query ViewCommentsQuery($id: String!) {
     viewComments(id: $id) {
       id
-      name
-      description
+      text
+      datePosted
+      listingId
       upvotes
       downvotes
-      pictureUrl
-      owner {
+      user {
         id
         email
       }
