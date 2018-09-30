@@ -34,10 +34,11 @@ export class ListingModalConnector extends React.PureComponent<
 
           return (
             <Modal
-              title="Basic Modal"
+              title={data.listing.name}
               visible={true}
               onOk={this.handleOk}
               onCancel={this.handleCancel}
+              style={{ minWidth: "60vw" }}
             >
               {data.listing.pictureUrl && (
                 <img
@@ -45,15 +46,14 @@ export class ListingModalConnector extends React.PureComponent<
                   src={data.listing.pictureUrl}
                   style={{
                     display: "block",
-                    maxWidth: 590,
-                    maxHeight: 480,
+                    maxWidth: 790,
+                    maxHeight: 580,
                     width: "auto",
                     height: "auto",
                     margin: "auto"
                   }}
                 />
               )}
-              <div>name: {data.listing.name}</div>
               <div>upvotes: {data.listing.upvotes}</div>
               <div>downvotes: {data.listing.downvotes}</div>
               <div>description: {data.listing.description}</div>

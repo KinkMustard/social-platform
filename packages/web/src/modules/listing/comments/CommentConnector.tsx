@@ -29,20 +29,7 @@ export class CommentConnector extends React.PureComponent<
                   listingId={listingId}
                   refetchComments={refetchComments}
                 />
-
-                <div
-                  style={{
-                    marginTop: "16px",
-                    border: "1px dashed #e8e8e8",
-                    borderRadius: "6px",
-                    backgroundColor: "#f5f5f5",
-                    minHeight: "200px",
-                    textAlign: "center",
-                    paddingTop: "80px"
-                  }}
-                >
-                  no comments yet
-                </div>
+                <div>no comments yet</div>
               </React.Fragment>
             );
           }
@@ -53,21 +40,9 @@ export class CommentConnector extends React.PureComponent<
                 listingId={listingId}
                 refetchComments={refetchComments}
               />
-              <div
-                style={{
-                  marginTop: "16px",
-                  border: "1px dashed #e9e9e9",
-                  borderRadius: "6px",
-                  backgroundColor: "#fafafa",
-                  minHeight: "200px",
-                  textAlign: "center",
-                  paddingTop: "80px"
-                }}
-              >
-                {comments.map((m, i) => (
-                  <div key={`${i}-lm`}>{m.text}</div>
-                ))}
-              </div>
+              {comments.map((m, i) => (
+                <div key={`${i}-lm`}>{m.text}</div>
+              ))}
             </div>
           );
         }}
