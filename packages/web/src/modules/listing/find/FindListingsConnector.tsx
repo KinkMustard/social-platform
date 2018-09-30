@@ -46,12 +46,21 @@ class C extends React.PureComponent<
               marginRight: "20vw"
             }}
           >
-            <VoteButton
-              listingId={l.id}
-              listingUpvotes={l.upvotes}
-              listingDownvotes={l.downvotes}
-              refetchListings={refetchListings}
-            />
+            <div
+              style={{
+                width: 100,
+                backgroundColor: "#fafafa",
+                textAlign: "center",
+                height: 695
+              }}
+            >
+              <VoteButton
+                listingId={l.id}
+                listingUpvotes={l.upvotes}
+                listingDownvotes={l.downvotes}
+                refetchListings={refetchListings}
+              />
+            </div>
             <Card
               key={`${l.id}-card`}
               hoverable={true}

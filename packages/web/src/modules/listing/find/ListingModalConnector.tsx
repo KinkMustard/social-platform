@@ -42,12 +42,23 @@ export class ListingModalConnector extends React.PureComponent<
                 onCancel={this.handleCancel}
                 style={{ minWidth: "60vw" }}
               >
-                <VoteButton
-                  listingId={data.listing.id}
-                  listingUpvotes={data.listing.upvotes}
-                  listingDownvotes={data.listing.downvotes}
-                  refetchListings={data.refetchListings}
-                />
+                <div
+                  style={{
+                    // width: 100,
+                    // backgroundColor: "#fafafa",
+                    textAlign: "center",
+                    // height: 695,
+                    display: "inline",
+                    float: "left"
+                  }}
+                >
+                  <VoteButton
+                    listingId={data.listing.id}
+                    listingUpvotes={data.listing.upvotes}
+                    listingDownvotes={data.listing.downvotes}
+                    refetchListings={data.refetchListings}
+                  />
+                </div>
                 {data.listing.pictureUrl && (
                   <img
                     alt="example"
