@@ -1,26 +1,10 @@
 import * as React from "react";
-import { Card, Icon, Button, Modal } from "antd";
-import {
-  withFindListings,
-  WithFindListings,
-  UpvoteListing
-} from "@abb/controller";
+import { Card, Icon, Modal } from "antd";
+import { withFindListings, WithFindListings } from "@abb/controller";
 import { RouteComponentProps } from "react-router-dom";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
 import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 // import { Link } from "react-router-dom";
-
-const meQuery = gql`
-  {
-    me {
-      email
-      id
-      upvoted
-      downvoted
-    }
-  }
-`;
+import { VoteButton } from "../vote/VoteButton";
 
 class C extends React.PureComponent<
   RouteComponentProps<{}> & WithFindListings
@@ -62,197 +46,12 @@ class C extends React.PureComponent<
               marginRight: "20vw"
             }}
           >
-            <div
-              style={{
-                width: 100,
-                backgroundColor: "#fafafa",
-                textAlign: "center",
-                height: 695
-              }}
-            >
-              <UpvoteListing>
-                {({ upvoteListing }) => (
-                  <Query query={meQuery}>
-                    {({ data, refetch }) => {
-                      if (!data.me) {
-                        return <div>...loading</div>;
-                      }
-                      console.log("data", data);
-                      console.log("l", l);
-                      return (
-                        <React.Fragment>
-                          <Button
-                            shape="circle"
-                            icon="up"
-                            size="large"
-                            style={
-                              data.me.upvoted.includes(l.id)
-                                ? {
-                                  margin: "auto",
-                                  display: "block",
-                                  marginTop: 20,
-                                  backgroundColor: "#69c0ff"
-                                }
-                                : {
-                                  margin: "auto",
-                                  display: "block",
-                                  marginTop: 20,
-                                  backgroundColor: "#e6f7ff"
-                                }
-                            }
-                            onClick={async () => {
-                              if (
-                                !data.me.upvoted.includes(l.id) &&
-                                data.me.downvoted.includes(l.id)
-                              ) {
-                                let tempUpvotes = l.upvotes;
-                                tempUpvotes++;
-                                let tempDownvotes = l.downvotes;
-                                tempDownvotes--;
-                                const result = await upvoteListing({
-                                  variables: {
-                                    listingId: l.id,
-                                    upvotes: tempUpvotes,
-                                    downvotes: tempDownvotes,
-                                    userId: data.me.id,
-                                    upvoted: data.me.upvoted,
-                                    downvoted: data.me.downvoted,
-                                    voteScenario: "upvote-while-downvoted"
-                                  }
-                                });
-                                console.log("result", result);
-                                refetch();
-                                refetchListings();
-                              } else if (!data.me.upvoted.includes(l.id)) {
-                                let temp = l.upvotes;
-                                temp++;
-                                const result = await upvoteListing({
-                                  variables: {
-                                    listingId: l.id,
-                                    upvotes: temp,
-                                    downvotes: l.downvotes,
-                                    userId: data.me.id,
-                                    upvoted: data.me.upvoted,
-                                    downvoted: data.me.downvoted,
-                                    voteScenario: "upvote"
-                                  }
-                                });
-                                console.log("result", result);
-                                refetch();
-                                refetchListings();
-                              } else if (data.me.upvoted.includes(l.id)) {
-                                let temp = l.upvotes;
-                                temp--;
-                                const result = await upvoteListing({
-                                  variables: {
-                                    listingId: l.id,
-                                    upvotes: temp,
-                                    downvotes: l.downvotes,
-                                    userId: data.me.id,
-                                    upvoted: data.me.upvoted,
-                                    downvoted: data.me.downvoted,
-                                    voteScenario: "deupvote"
-                                  }
-                                });
-                                console.log("result", result);
-                                refetch();
-                                refetchListings();
-                              }
-                            }}
-                          />
-                          <p
-                            style={{
-                              fontSize: 18,
-                              marginTop: 10,
-                              marginBottom: 10
-                            }}
-                          >
-                            {l.upvotes - l.downvotes}
-                          </p>
-                          <Button
-                            shape="circle"
-                            icon="down"
-                            size="large"
-                            style={
-                              data.me.downvoted.includes(l.id)
-                                ? {
-                                  margin: "auto",
-                                  display: "block",
-                                  backgroundColor: "#ffc069"
-                                }
-                                : {
-                                  margin: "auto",
-                                  display: "block",
-                                  backgroundColor: "#fff7e6"
-                                }
-                            }
-                            onClick={async () => {
-                              if (
-                                !data.me.downvoted.includes(l.id) &&
-                                data.me.upvoted.includes(l.id)
-                              ) {
-                                let tempDownvotes = l.downvotes;
-                                tempDownvotes++;
-                                let tempUpvotes = l.upvotes;
-                                tempUpvotes--;
-                                const result = await upvoteListing({
-                                  variables: {
-                                    listingId: l.id,
-                                    upvotes: tempUpvotes,
-                                    downvotes: tempDownvotes,
-                                    userId: data.me.id,
-                                    upvoted: data.me.upvoted,
-                                    downvoted: data.me.downvoted,
-                                    voteScenario: "downvote-while-upvoted"
-                                  }
-                                });
-                                console.log("result", result);
-                                refetch();
-                                refetchListings();
-                              } else if (!data.me.downvoted.includes(l.id)) {
-                                let temp = l.downvotes;
-                                temp++;
-                                const result = await upvoteListing({
-                                  variables: {
-                                    listingId: l.id,
-                                    upvotes: l.upvotes,
-                                    downvotes: temp,
-                                    userId: data.me.id,
-                                    upvoted: data.me.upvoted,
-                                    downvoted: data.me.downvoted,
-                                    voteScenario: "downvote"
-                                  }
-                                });
-                                console.log("result", result);
-                                refetch();
-                                refetchListings();
-                              } else if (data.me.downvoted.includes(l.id)) {
-                                let temp = l.downvotes;
-                                temp--;
-                                const result = await upvoteListing({
-                                  variables: {
-                                    listingId: l.id,
-                                    upvotes: l.upvotes,
-                                    downvotes: temp,
-                                    userId: data.me.id,
-                                    upvoted: data.me.upvoted,
-                                    downvoted: data.me.downvoted,
-                                    voteScenario: "dedownvote"
-                                  }
-                                });
-                                console.log("result", result);
-                                refetch();
-                                refetchListings();
-                              }
-                            }}
-                          />
-                        </React.Fragment>
-                      );
-                    }}
-                  </Query>
-                )}
-              </UpvoteListing>
-            </div>
+            <VoteButton
+              listingId={l.id}
+              listingUpvotes={l.upvotes}
+              listingDownvotes={l.downvotes}
+              refetchListings={refetchListings}
+            />
             <Card
               key={`${l.id}-card`}
               hoverable={true}

@@ -28,6 +28,7 @@ export const viewListingQuery = gql`
 export interface WithViewListing {
   listing: ViewListingQuery_viewListing | null;
   loading: boolean;
+  refetchListings: any;
 }
 
 interface Props {
@@ -43,16 +44,19 @@ export class ViewListing extends React.PureComponent<Props> {
         query={viewListingQuery}
         variables={{ id: listingId }}
       >
-        {({ data, loading }) => {
+        {({ data, loading, refetch }) => {
           let listing: ViewListingQuery_viewListing | null = null;
+          let refetchListings: any;
 
           if (data && data.viewListing) {
             listing = data.viewListing;
+            refetchListings = refetch;
           }
 
           return children({
             listing,
-            loading
+            loading,
+            refetchListings
           });
         }}
       </Query>
