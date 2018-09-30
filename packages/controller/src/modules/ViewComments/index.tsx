@@ -28,6 +28,7 @@ export const viewCommentsQuery = gql`
 export interface WithViewComments {
   comments: ViewCommentsQuery_Comments[] | null;
   loading: boolean;
+  refetchComments: any;
 }
 
 interface Props {
@@ -43,16 +44,19 @@ export class ViewComments extends React.PureComponent<Props> {
         query={viewCommentsQuery}
         variables={{ listingId }}
       >
-        {({ data, loading }) => {
+        {({ data, loading, refetch }) => {
           let comments: ViewCommentsQuery_Comments[] | null = null;
+          let refetchComments: any;
 
           if (data && data.comments) {
             comments = data.comments;
+            refetchComments = refetch;
           }
 
           return children({
             comments,
-            loading
+            loading,
+            refetchComments
           });
         }}
       </Query>

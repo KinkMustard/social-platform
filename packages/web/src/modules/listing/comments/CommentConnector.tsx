@@ -18,20 +18,56 @@ export class CommentConnector extends React.PureComponent<
     } = this.props;
     return (
       <ViewComments listingId={listingId}>
-        {({ loading, comments }) => {
+        {({ loading, comments, refetchComments }) => {
           if (loading) {
             return <div>...loading</div>;
           }
           if (!comments) {
-            return <div>no comments yet</div>;
+            return (
+              <React.Fragment>
+                <InputBar
+                  listingId={listingId}
+                  refetchComments={refetchComments}
+                />
+
+                <div
+                  style={{
+                    marginTop: "16px",
+                    border: "1px dashed #e8e8e8",
+                    borderRadius: "6px",
+                    backgroundColor: "#f5f5f5",
+                    minHeight: "200px",
+                    textAlign: "center",
+                    paddingTop: "80px"
+                  }}
+                >
+                  no comments yet
+                </div>
+              </React.Fragment>
+            );
           }
 
           return (
             <div>
-              {comments.map((m, i) => (
-                <div key={`${i}-lm`}>{m.text}</div>
-              ))}
-              <InputBar listingId={listingId} />
+              <InputBar
+                listingId={listingId}
+                refetchComments={refetchComments}
+              />
+              <div
+                style={{
+                  marginTop: "16px",
+                  border: "1px dashed #e9e9e9",
+                  borderRadius: "6px",
+                  backgroundColor: "#fafafa",
+                  minHeight: "200px",
+                  textAlign: "center",
+                  paddingTop: "80px"
+                }}
+              >
+                {comments.map((m, i) => (
+                  <div key={`${i}-lm`}>{m.text}</div>
+                ))}
+              </div>
             </div>
           );
         }}

@@ -3,23 +3,31 @@ import { FieldProps } from "formik";
 import { Form, Input, InputNumber } from "antd";
 
 const FormItem = Form.Item;
+const { TextArea } = Input;
 
 export const InputField: React.SFC<
-  FieldProps<any> & {
-    prefix: React.ReactNode;
-    label?: string;
-    useNumberComponent?: boolean;
-  }
+FieldProps<any> & {
+prefix: React.ReactNode;
+label?: string;
+useNumberComponent?: boolean;
+useTextAreaComponent?: boolean;
+}
 > = ({
   field: { onChange, ...field },
   form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   label,
   useNumberComponent = false,
+  useTextAreaComponent = false,
   ...props
 }) => {
   const errorMsg = touched[field.name] && errors[field.name];
 
-  const Comp = useNumberComponent ? InputNumber : Input;
+  let Comp: any = Input;
+  if (useNumberComponent) {
+    Comp = InputNumber;
+  } else if (useTextAreaComponent) {
+    Comp = TextArea;
+  }
 
   return (
     <FormItem

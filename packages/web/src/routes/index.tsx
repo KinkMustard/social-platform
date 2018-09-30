@@ -15,7 +15,6 @@ import { ViewListingConnector } from "../modules/listing/view/ViewListingConnect
 import { MessageConnector } from "../modules/listing/messages/MessageConnector";
 import { EditListingConnector } from "../modules/listing/edit/EditListingConnector";
 import { Homepage } from "../modules/homepage/homepage";
-import { CommentConnector } from "../modules/listing/comments/CommentConnector";
 import { ModalContainer, ModalRoute } from "react-router-modal";
 import { ListingModalConnector } from "../modules/listing/find/ListingModalConnector";
 
@@ -54,10 +53,6 @@ export const Routes = () => (
       </Switch>
       <ModalRoute
         component={ListingModalConnector}
-        path="/listings/:listingId/modal"
-      />
-      <ModalRoute
-        component={CommentConnector}
         path="/listings/:listingId/modal"
       />
       <ModalContainer />
