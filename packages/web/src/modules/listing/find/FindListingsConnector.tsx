@@ -35,6 +35,7 @@ class C extends React.PureComponent<
 
   handleOk = (e: any) => {
     console.log(e);
+    this.props.history.push("/listings");
     this.setState({
       visible: false
     });
@@ -42,6 +43,7 @@ class C extends React.PureComponent<
 
   handleCancel = (e: any) => {
     console.log(e);
+    this.props.history.push("/listings");
     this.setState({
       visible: false
     });
@@ -257,6 +259,7 @@ class C extends React.PureComponent<
               style={{ width: 640, height: 695, marginBottom: 10 }}
               onClick={() => {
                 // this.props.history.push(`/listing/${l.id}`);
+                this.props.history.push(`/listings/${l.id}/comments`);
                 this.showModal();
               }}
               actions={[

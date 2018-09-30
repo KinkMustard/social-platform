@@ -15,6 +15,7 @@ import { ViewListingConnector } from "../modules/listing/view/ViewListingConnect
 import { MessageConnector } from "../modules/listing/messages/MessageConnector";
 import { EditListingConnector } from "../modules/listing/edit/EditListingConnector";
 import { Homepage } from "../modules/homepage/homepage";
+import { CommentConnector } from "../modules/listing/comments/CommentConnector";
 
 export const Routes = () => (
   <BrowserRouter>
@@ -40,7 +41,8 @@ export const Routes = () => (
         path="/listing/:listingId"
         component={ViewListingConnector}
       />
-      <Route path="/listing/:listingId/chat" component={MessageConnector} />
+      <Route path="/listings/:listingId/chat" component={MessageConnector} />
+      <Route path="/listing/:listingId/comments" component={CommentConnector} />
       <Route path="/listing/:listingId/edit" component={EditListingConnector} />
       <AuthRoute path="/create-listing" component={CreateListingConnector} />
       <AuthRoute path="/delete-demo" component={DemoDelete} />
