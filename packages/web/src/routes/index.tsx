@@ -46,10 +46,6 @@ export const Routes = () => (
         />
         <Route path="/listings/:listingId/chat" component={MessageConnector} />
         <Route
-          path="/listing/:listingId/comments"
-          component={CommentConnector}
-        />
-        <Route
           path="/listing/:listingId/edit"
           component={EditListingConnector}
         />
@@ -58,6 +54,10 @@ export const Routes = () => (
       </Switch>
       <ModalRoute
         component={ListingModalConnector}
+        path="/listings/:listingId/modal"
+      />
+      <ModalRoute
+        component={CommentConnector}
         path="/listings/:listingId/modal"
       />
       <ModalContainer />

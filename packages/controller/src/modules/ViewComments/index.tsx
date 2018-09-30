@@ -9,8 +9,8 @@ import {
 } from "../../schemaTypes";
 
 export const viewCommentsQuery = gql`
-  query ViewCommentsQuery($id: String!) {
-    viewComments(id: $id) {
+  query ViewCommentsQuery($listingId: String!) {
+    comments(listingId: $listingId) {
       id
       text
       datePosted

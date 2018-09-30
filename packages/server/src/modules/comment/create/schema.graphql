@@ -1,8 +1,8 @@
-input CreateCommentInput {
+input CommentInput {
   text: String!
   listingId: String!
 }
 
 type Mutation {
-  createComment(input: CreateCommentInput!): Boolean!
+  createComment(comment: CommentInput!): Boolean!
 }

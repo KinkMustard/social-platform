@@ -5,11 +5,7 @@ import * as getTime from "date-fns/get_time";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    createComment: async (
-      _,
-      { input: { picture, ...data } },
-      { session, redis }
-    ) => {
+    createComment: async (_, { input: { ...data } }, { session, redis }) => {
       const comment = await Comment.create({
         ...data,
         datePosted: String(getTime(new Date())),

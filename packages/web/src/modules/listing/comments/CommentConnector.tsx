@@ -32,7 +32,6 @@ export class CommentConnector extends React.PureComponent<
                 <div key={`${i}-lm`}>{m.text}</div>
               ))}
               <InputBar listingId={listingId} />
-              <button onClick={this.unsubscribe}>unsubscribe</button>
             </div>
           );
         }}
