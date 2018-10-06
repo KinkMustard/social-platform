@@ -3,6 +3,7 @@ import { Button } from "antd";
 import gql from "graphql-tag";
 import { UpvoteListing } from "@abb/controller";
 import { Query } from "react-apollo";
+import { ButtonSize } from "antd/lib/button/button";
 
 interface Props {
   listingId: string;
@@ -40,25 +41,43 @@ export class VoteButton extends React.PureComponent<Props> {
               if (!data.me) {
                 return <div>...loading</div>;
               }
-              console.log("data", data);
+              let styleProperties: {
+              buttonSize: ButtonSize;
+              buttonMargin: number;
+              textMargin: number;
+              fontSize: number;
+              } = {
+                buttonSize: "large",
+                buttonMargin: 20,
+                textMargin: 7,
+                fontSize: 18
+              };
+              if (voteTarget === "comment") {
+                styleProperties = {
+                  buttonSize: "small",
+                  buttonMargin: 10,
+                  textMargin: 2,
+                  fontSize: 10
+                };
+              }
               return (
                 <React.Fragment>
                   <Button
                     shape="circle"
                     icon="up"
-                    size="large"
+                    size={styleProperties.buttonSize}
                     style={
                       data.me.upvoted.includes(listingId)
                         ? {
                           margin: "auto",
                           display: "block",
-                          marginTop: 20,
+                          marginTop: styleProperties.buttonMargin,
                           backgroundColor: "#69c0ff"
                         }
                         : {
                           margin: "auto",
                           display: "block",
-                          marginTop: 20,
+                          marginTop: styleProperties.buttonMargin,
                           backgroundColor: "#e6f7ff"
                         }
                     }
@@ -127,9 +146,9 @@ export class VoteButton extends React.PureComponent<Props> {
                   />
                   <p
                     style={{
-                      fontSize: 18,
-                      marginTop: 10,
-                      marginBottom: 10
+                      fontSize: styleProperties.fontSize,
+                      marginTop: styleProperties.textMargin,
+                      marginBottom: styleProperties.textMargin
                     }}
                   >
                     {listingUpvotes - listingDownvotes}
@@ -137,7 +156,7 @@ export class VoteButton extends React.PureComponent<Props> {
                   <Button
                     shape="circle"
                     icon="down"
-                    size="large"
+                    size={styleProperties.buttonSize}
                     style={
                       data.me.downvoted.includes(listingId)
                         ? {

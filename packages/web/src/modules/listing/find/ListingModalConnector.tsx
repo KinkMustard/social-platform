@@ -44,10 +44,7 @@ export class ListingModalConnector extends React.PureComponent<
               >
                 <div
                   style={{
-                    // width: 100,
-                    // backgroundColor: "#fafafa",
                     textAlign: "center",
-                    // height: 695,
                     display: "inline",
                     float: "left"
                   }}
