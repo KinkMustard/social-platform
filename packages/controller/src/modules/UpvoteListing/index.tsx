@@ -16,6 +16,7 @@ export const upvoteListingMutation = gql`
     $upvoted: [String!]
     $downvoted: [String!]
     $voteScenario: String!
+    $voteTarget: String!
   ) {
     upvoteListing(
       listingId: $listingId
@@ -25,6 +26,7 @@ export const upvoteListingMutation = gql`
       upvoted: $upvoted
       downvoted: $downvoted
       voteScenario: $voteScenario
+      voteTarget: $voteTarget
     )
   }
 `;

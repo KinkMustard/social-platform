@@ -1,7 +1,8 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Listing } from "../../../entity/Listing";
+import { Comment } from "../../../entity/Comment";
 import { getConnection } from "typeorm";
-import { listingCacheKey } from "../../../constants";
+import { listingCacheKey, commentCacheKey } from "../../../constants";
 // import { isAuthenticated } from "../../shared/isAuthenticated";
 import { User } from "../../../entity/User";
 import { pull } from "lodash";
@@ -24,7 +25,8 @@ export const resolvers: ResolverMap = {
         userId,
         upvoted,
         downvoted,
-        voteScenario
+        voteScenario,
+        voteTarget
       },
       { redis }
     ) => {
@@ -34,21 +36,39 @@ export const resolvers: ResolverMap = {
       // 2. user remove picture
       // 3. do nothing
 
-      const {
-        raw: [newListing]
-      } = await getConnection()
-        .createQueryBuilder()
-        .update(Listing)
-        .set({ upvotes, downvotes })
-        .where("id = :id", { id: listingId })
-        .returning("*")
-        .execute();
+      if (voteTarget === "listing") {
+        const {
+          raw: [newListing]
+        } = await getConnection()
+          .createQueryBuilder()
+          .update(Listing)
+          .set({ upvotes, downvotes })
+          .where("id = :id", { id: listingId })
+          .returning("*")
+          .execute();
 
-      const listings = await redis.lrange(listingCacheKey, 0, -1);
-      const idx = listings.findIndex(
-        (x: string) => JSON.parse(x).id === listingId
-      );
-      await redis.lset(listingCacheKey, idx, JSON.stringify(newListing));
+        const listings = await redis.lrange(listingCacheKey, 0, -1);
+        const idx = listings.findIndex(
+          (x: string) => JSON.parse(x).id === listingId
+        );
+        await redis.lset(listingCacheKey, idx, JSON.stringify(newListing));
+      } else if (voteTarget === "comment") {
+        const {
+          raw: [newComment]
+        } = await getConnection()
+          .createQueryBuilder()
+          .update(Comment)
+          .set({ upvotes, downvotes })
+          .where("id = :id", { id: listingId })
+          .returning("*")
+          .execute();
+
+        const comments = await redis.lrange(commentCacheKey, 0, -1);
+        const idx = comments.findIndex(
+          (x: string) => JSON.parse(x).id === listingId
+        );
+        await redis.lset(commentCacheKey, idx, JSON.stringify(newComment));
+      }
 
       const tempUpvoted = upvoted;
       const tempDownvoted = downvoted;

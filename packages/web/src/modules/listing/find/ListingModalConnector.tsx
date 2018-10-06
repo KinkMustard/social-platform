@@ -57,6 +57,7 @@ export class ListingModalConnector extends React.PureComponent<
                     listingUpvotes={data.listing.upvotes}
                     listingDownvotes={data.listing.downvotes}
                     refetchListings={data.refetchListings}
+                    voteTarget="listing"
                   />
                 </div>
                 {data.listing.pictureUrl && (

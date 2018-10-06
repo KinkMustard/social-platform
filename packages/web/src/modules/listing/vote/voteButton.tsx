@@ -9,6 +9,7 @@ interface Props {
   listingUpvotes: number;
   listingDownvotes: number;
   refetchListings: any;
+  voteTarget: string;
 }
 
 const meQuery = gql`
@@ -28,7 +29,8 @@ export class VoteButton extends React.PureComponent<Props> {
       listingId,
       listingUpvotes,
       listingDownvotes,
-      refetchListings
+      refetchListings,
+      voteTarget
     } = this.props;
     return (
       <UpvoteListing>
@@ -77,7 +79,8 @@ export class VoteButton extends React.PureComponent<Props> {
                             userId: data.me.id,
                             upvoted: data.me.upvoted,
                             downvoted: data.me.downvoted,
-                            voteScenario: "upvote-while-downvoted"
+                            voteScenario: "upvote-while-downvoted",
+                            voteTarget
                           }
                         });
                         console.log("result", result);
@@ -94,7 +97,8 @@ export class VoteButton extends React.PureComponent<Props> {
                             userId: data.me.id,
                             upvoted: data.me.upvoted,
                             downvoted: data.me.downvoted,
-                            voteScenario: "upvote"
+                            voteScenario: "upvote",
+                            voteTarget
                           }
                         });
                         console.log("result", result);
@@ -111,7 +115,8 @@ export class VoteButton extends React.PureComponent<Props> {
                             userId: data.me.id,
                             upvoted: data.me.upvoted,
                             downvoted: data.me.downvoted,
-                            voteScenario: "deupvote"
+                            voteScenario: "deupvote",
+                            voteTarget
                           }
                         });
                         console.log("result", result);
@@ -163,7 +168,8 @@ export class VoteButton extends React.PureComponent<Props> {
                             userId: data.me.id,
                             upvoted: data.me.upvoted,
                             downvoted: data.me.downvoted,
-                            voteScenario: "downvote-while-upvoted"
+                            voteScenario: "downvote-while-upvoted",
+                            voteTarget
                           }
                         });
                         console.log("result", result);
@@ -180,7 +186,8 @@ export class VoteButton extends React.PureComponent<Props> {
                             userId: data.me.id,
                             upvoted: data.me.upvoted,
                             downvoted: data.me.downvoted,
-                            voteScenario: "downvote"
+                            voteScenario: "downvote",
+                            voteTarget
                           }
                         });
                         console.log("result", result);
@@ -197,7 +204,8 @@ export class VoteButton extends React.PureComponent<Props> {
                             userId: data.me.id,
                             upvoted: data.me.upvoted,
                             downvoted: data.me.downvoted,
-                            voteScenario: "dedownvote"
+                            voteScenario: "dedownvote",
+                            voteTarget
                           }
                         });
                         console.log("result", result);

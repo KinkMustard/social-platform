@@ -49,10 +49,26 @@ export class InputBar extends React.PureComponent<Props> {
                   component={InputField}
                   useTextAreaComponent={true}
                   autosize={{ minRows: 4 }}
+                  style={{ overlap: "hide" }}
                 />
-                <Button loading={this.state.loading} htmlType="submit">
-                  send comment
-                </Button>
+                <div
+                  style={{
+                    margin: 0,
+                    height: 60,
+                    marginTop: -35,
+                    border: "1px solid #e9e9e9",
+                    borderRadius: "6px",
+                    backgroundColor: "#fafafa"
+                  }}
+                >
+                  <Button
+                    style={{ float: "right", marginRight: 10, marginTop: 18 }}
+                    loading={this.state.loading}
+                    htmlType="submit"
+                  >
+                    Comment
+                  </Button>
+                </div>
               </Form>
             )}
           </Formik>

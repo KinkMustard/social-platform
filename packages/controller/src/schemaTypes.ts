@@ -316,6 +316,7 @@ export interface UpvoteListingMutationVariables {
   upvoted: Array<string>;
   downvoted: Array<string>;
   voteScenario: string;
+  voteTarget: string;
 }
 
 /* tslint:disable */

@@ -41,7 +41,7 @@ export class CommentConnector extends React.PureComponent<
                 refetchComments={refetchComments}
               />
               {comments.map((m, i) => (
-                <div key={`${i}-lm`}>{m.text}</div>
+                <div key={`${i}-lm`}>{m.text}{m.downvotes}</div>
               ))}
             </div>
           );

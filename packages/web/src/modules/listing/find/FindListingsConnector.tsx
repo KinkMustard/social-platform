@@ -59,6 +59,7 @@ class C extends React.PureComponent<
                 listingUpvotes={l.upvotes}
                 listingDownvotes={l.downvotes}
                 refetchListings={refetchListings}
+                voteTarget="listing"
               />
             </div>
             <Card
