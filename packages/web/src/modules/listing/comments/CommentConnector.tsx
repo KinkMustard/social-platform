@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { ViewComments } from "@abb/controller";
 import { InputBar } from "./CommentInputBar";
 import { VoteButton } from "../vote/VoteButton";
+import { isEmpty } from "lodash";
 
 export class CommentConnector extends React.PureComponent<
   RouteComponentProps<{
@@ -23,14 +24,27 @@ export class CommentConnector extends React.PureComponent<
           if (loading) {
             return <div>...loading</div>;
           }
-          if (!comments) {
+          if (!comments || isEmpty(comments)) {
             return (
               <React.Fragment>
                 <InputBar
                   listingId={listingId}
                   refetchComments={refetchComments}
                 />
-                <div>no comments yet</div>
+                <div
+                  style={{
+                    marginTop: "16px",
+                    border: "1px dashed #e9e9e9",
+                    borderRadius: "6px",
+                    backgroundColor: "#fafafa",
+                    minHeight: "200px",
+                    textAlign: "center",
+                    paddingTop: "80px",
+                    fontSize: 20
+                  }}
+                >
+                  no comments yet
+                </div>
               </React.Fragment>
             );
           }
@@ -45,8 +59,8 @@ export class CommentConnector extends React.PureComponent<
                 <React.Fragment>
                   <div
                     style={{
-                      display: "block",
-                      height: 200
+                      display: "flex",
+                      alignItems: "center"
                     }}
                   >
                     <div
@@ -64,7 +78,19 @@ export class CommentConnector extends React.PureComponent<
                         voteTarget="comment"
                       />
                     </div>
-                    <div key={`${i}-lm`}>{m.text}</div>
+                    <div
+                      key={`${i}-lm`}
+                      style={{
+                        marginLeft: 6,
+                        display: "flex",
+                        flexDirection: "column"
+                      }}
+                    >
+                      <p style={{ marginBottom: 0, fontSize: 12 }}>
+                        {m.user.email}
+                      </p>
+                      <p style={{ marginTop: 0, fontSize: 14 }}>{m.text}</p>
+                    </div>
                   </div>
                 </React.Fragment>
               ))}
