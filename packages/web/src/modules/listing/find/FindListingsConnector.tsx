@@ -1,6 +1,10 @@
 import * as React from "react";
-import { Card, Icon, Modal } from "antd";
-import { withFindListings, WithFindListings } from "@abb/controller";
+import { Card, Icon } from "antd";
+import {
+  withFindListings,
+  WithFindListings,
+  ViewComments
+} from "@abb/controller";
 import { RouteComponentProps } from "react-router-dom";
 import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 // import { Link } from "react-router-dom";
@@ -9,29 +13,6 @@ import { VoteButton } from "../vote/VoteButton";
 class C extends React.PureComponent<
   RouteComponentProps<{}> & WithFindListings
   > {
-  state = { visible: false };
-
-  showModal = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  handleOk = (e: any) => {
-    console.log(e);
-    this.props.history.push("/listings");
-    this.setState({
-      visible: false
-    });
-  };
-
-  handleCancel = (e: any) => {
-    console.log(e);
-    this.props.history.push("/listings");
-    this.setState({
-      visible: false
-    });
-  };
   render() {
     const { listings, loading, refetchListings } = this.props;
     return (
@@ -99,31 +80,16 @@ class C extends React.PureComponent<
               <p style={{ fontSize: 18, display: "inline" }}>
                 {l.description}
                 posted {distanceInWordsToNow(Number(l.datePosted))} ago
+                <ViewComments listingId={l.id}>
+                  {({ loading: commentLoading, comments }) => {
+                    if (commentLoading || !comments) {
+                      return <div>...loading</div>;
+                    }
+                    return <div>comments: {comments.length}</div>;
+                  }}
+                </ViewComments>
               </p>
             </Card>
-            <Modal
-              title="Basic Modal"
-              visible={this.state.visible}
-              onOk={this.handleOk}
-              onCancel={this.handleCancel}
-            >
-              {l.pictureUrl && (
-                <img
-                  alt="example"
-                  src={l.pictureUrl}
-                  style={{
-                    display: "block",
-                    maxWidth: 590,
-                    maxHeight: 480,
-                    width: "auto",
-                    height: "auto",
-                    margin: "auto"
-                  }}
-                />
-              )}
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-            </Modal>
           </div>
         ))}
       </React.Fragment>

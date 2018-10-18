@@ -56,43 +56,41 @@ export class CommentConnector extends React.PureComponent<
                 refetchComments={refetchComments}
               />
               {comments.map((m, i) => (
-                <React.Fragment>
+                <div
+                  key={i}
+                  style={{
+                    display: "flex",
+                    alignItems: "center"
+                  }}
+                >
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center"
+                      textAlign: "center",
+                      display: "inline",
+                      float: "left"
                     }}
                   >
-                    <div
-                      style={{
-                        textAlign: "center",
-                        display: "inline",
-                        float: "left"
-                      }}
-                    >
-                      <VoteButton
-                        listingId={m.id}
-                        listingUpvotes={m.upvotes}
-                        listingDownvotes={m.downvotes}
-                        refetchListings={refetchComments}
-                        voteTarget="comment"
-                      />
-                    </div>
-                    <div
-                      key={`${i}-lm`}
-                      style={{
-                        marginLeft: 6,
-                        display: "flex",
-                        flexDirection: "column"
-                      }}
-                    >
-                      <p style={{ marginBottom: 0, fontSize: 12 }}>
-                        {m.user.email}
-                      </p>
-                      <p style={{ marginTop: 0, fontSize: 14 }}>{m.text}</p>
-                    </div>
+                    <VoteButton
+                      listingId={m.id}
+                      listingUpvotes={m.upvotes}
+                      listingDownvotes={m.downvotes}
+                      refetchListings={refetchComments}
+                      voteTarget="comment"
+                    />
                   </div>
-                </React.Fragment>
+                  <div
+                    style={{
+                      marginLeft: 6,
+                      display: "flex",
+                      flexDirection: "column"
+                    }}
+                  >
+                    <p style={{ marginBottom: 0, fontSize: 12 }}>
+                      {m.user.email}
+                    </p>
+                    <p style={{ marginTop: 0, fontSize: 14 }}>{m.text}</p>
+                  </div>
+                </div>
               ))}
             </div>
           );
