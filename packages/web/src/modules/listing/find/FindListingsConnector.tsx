@@ -23,16 +23,17 @@ class C extends React.PureComponent<
             style={{
               display: "flex",
               margin: "auto",
-              marginLeft: "20vw",
-              marginRight: "20vw"
+              width: 740,
+              maxHeight: 800,
+              minHeight: 400,
+              marginBottom: 30
             }}
           >
             <div
               style={{
                 width: 100,
                 backgroundColor: "#fafafa",
-                textAlign: "center",
-                height: 695
+                textAlign: "center"
               }}
             >
               <VoteButton
@@ -46,17 +47,12 @@ class C extends React.PureComponent<
             <Card
               key={`${l.id}-card`}
               hoverable={true}
-              style={{ width: 640, height: 695, marginBottom: 10 }}
+              style={{ width: 640 }}
               onClick={() => {
                 // this.props.history.push(`/listing/${l.id}`);
                 this.props.history.push(`/listings/${l.id}/modal`);
                 // this.showModal();
               }}
-              actions={[
-                <Icon type="setting" key="1" />,
-                <Icon type="edit" key="2" />,
-                <Icon type="ellipsis" key="3" />
-              ]}
             >
               <p style={{ fontSize: 14, marginBottom: 0 }}>
                 posted by: {l.owner.email}
@@ -77,9 +73,28 @@ class C extends React.PureComponent<
                   }}
                 />
               )}
-              <p style={{ fontSize: 18, display: "inline" }}>
+              <div
+                style={{
+                  fontSize: 18,
+                  marginTop: 8,
+                  overflowWrap: "break-word"
+                }}
+              >
                 {l.description}
-                posted {distanceInWordsToNow(Number(l.datePosted))} ago
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: 12,
+                  padding: 8,
+                  borderTop: "solid",
+                  marginBottom: -20,
+                  fontSize: 18,
+                  color: "#bfbfbf"
+                }}
+              >
+                <Icon type="message" style={{ marginRight: 6 }} />
                 <ViewComments listingId={l.id}>
                   {({ loading: commentLoading, comments }) => {
                     if (commentLoading || !comments) {
@@ -88,7 +103,12 @@ class C extends React.PureComponent<
                     return <div>comments: {comments.length}</div>;
                   }}
                 </ViewComments>
-              </p>
+                <Icon
+                  type="clock-circle"
+                  style={{ marginRight: 6, marginLeft: 14 }}
+                />
+                posted {distanceInWordsToNow(Number(l.datePosted))} ago
+              </div>
             </Card>
           </div>
         ))}
