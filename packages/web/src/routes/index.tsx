@@ -43,7 +43,7 @@ export const Routes = () => (
           path="/listing/:listingId"
           component={ViewListingConnector}
         />
-        <Route path="/listings/:listingId/chat" component={MessageConnector} />
+        <Route path="/listing/:listingId/chat" component={MessageConnector} />
         <Route
           path="/listing/:listingId/edit"
           component={EditListingConnector}

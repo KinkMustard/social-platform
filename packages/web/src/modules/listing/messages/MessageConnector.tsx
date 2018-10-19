@@ -5,9 +5,9 @@ import { InputBar } from "./InputBar";
 
 export class MessageConnector extends React.PureComponent<
   RouteComponentProps<{
-    listingId: string;
+  listingId: string;
   }>
-> {
+  > {
   unsubscribe: () => void;
 
   render() {

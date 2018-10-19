@@ -77,7 +77,12 @@ class C extends React.PureComponent<
                 style={{
                   fontSize: 18,
                   marginTop: 8,
-                  overflowWrap: "break-word"
+                  overflowWrap: "break-word",
+                  border: "1px solid #e9e9e9",
+                  borderRadius: "6px",
+                  backgroundColor: "#fafafa",
+                  textAlign: "center",
+                  padding: 8
                 }}
               >
                 {l.description}

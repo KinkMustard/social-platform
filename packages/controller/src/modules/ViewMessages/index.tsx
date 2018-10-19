@@ -59,7 +59,7 @@ export class ViewMessages extends React.PureComponent<Props> {
           if (data && data.messages) {
             messages = data.messages;
           }
-
+          console.log("listingId", listingId);
           return children({
             messages,
             loading,
