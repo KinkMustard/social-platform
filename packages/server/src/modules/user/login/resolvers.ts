@@ -16,6 +16,11 @@ const errorResponse = [
   }
 ];
 
+const validateEmail = (email: string) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
 export const resolvers: ResolverMap = {
   Mutation: {
     login: async (
@@ -23,7 +28,9 @@ export const resolvers: ResolverMap = {
       { email, password }: GQL.ILoginOnMutationArguments,
       { session, redis, req }
     ) => {
-      const user = await User.findOne({ where: { email } });
+      const user: any = validateEmail(email)
+        ? await User.findOne({ where: { email } })
+        : await User.findOne({ where: { username: email } });
 
       if (!user) {
         return { errors: errorResponse };
