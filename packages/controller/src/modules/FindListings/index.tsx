@@ -20,6 +20,7 @@ export const findListingsQuery = gql`
       owner {
         id
         email
+        username
       }
     }
   }

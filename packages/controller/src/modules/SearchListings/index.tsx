@@ -24,6 +24,7 @@ export const searchListingsQuery = gql`
       owner {
         id
         email
+        username
       }
     }
   }

@@ -15,6 +15,7 @@ export const viewMessagesQuery = gql`
       user {
         id
         email
+        username
       }
       listingId
     }
@@ -28,6 +29,7 @@ export const newMessageSubscription = gql`
       user {
         id
         email
+        username
       }
       listingId
     }

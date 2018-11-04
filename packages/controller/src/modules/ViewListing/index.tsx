@@ -20,6 +20,7 @@ export const viewListingQuery = gql`
       owner {
         id
         email
+        username
       }
     }
   }

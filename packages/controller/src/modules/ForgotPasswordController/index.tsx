@@ -9,20 +9,20 @@ import {
 interface Props {
   children: (
     data: {
-      submit: (
-        values: SendForgotPasswordEmailMutationVariables
-      ) => Promise<null>;
+    submit: (
+      values: SendForgotPasswordEmailMutationVariables
+    ) => Promise<null>;
     }
   ) => JSX.Element | null;
 }
 
 class C extends React.PureComponent<
   ChildMutateProps<
-    Props,
-    SendForgotPasswordEmailMutation,
-    SendForgotPasswordEmailMutationVariables
+  Props,
+  SendForgotPasswordEmailMutation,
+  SendForgotPasswordEmailMutationVariables
   >
-> {
+  > {
   submit = async (values: SendForgotPasswordEmailMutationVariables) => {
     console.log(values);
     const response = await this.props.mutate({
@@ -45,7 +45,7 @@ const forgotPasswordMutation = gql`
 `;
 
 export const ForgotPasswordController = graphql<
-  Props,
-  SendForgotPasswordEmailMutation,
-  SendForgotPasswordEmailMutationVariables
->(forgotPasswordMutation)(C);
+Props,
+SendForgotPasswordEmailMutation,
+SendForgotPasswordEmailMutationVariables
+>(forgotPasswordMutation)(C as any);

@@ -20,6 +20,7 @@ export const viewCommentsQuery = gql`
       user {
         id
         email
+        username
       }
     }
   }

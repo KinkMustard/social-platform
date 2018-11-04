@@ -7,6 +7,7 @@
 
 export interface MeQuery_me {
   email: string;
+  username: string;
   id: string;
   upvoted: Array<string>;
   downvoted: Array<string>;
@@ -68,6 +69,7 @@ export interface CreateListingMutationVariables {
 export interface FindListingsQuery_findListings_owner {
   id: string;
   email: string;
+  username: string;
 }
 
 export interface FindListingsQuery_findListings {
@@ -186,6 +188,7 @@ export interface RegisterMutation {
 export interface RegisterMutationVariables {
   email: string;
   password: string;
+  username: string;
 }
 
 /* tslint:disable */
@@ -198,6 +201,7 @@ export interface RegisterMutationVariables {
 export interface ViewListingQuery_viewListing_owner {
   id: string;
   email: string;
+  username: string;
 }
 
 export interface ViewListingQuery_viewListing {
@@ -229,6 +233,7 @@ export interface ViewListingQueryVariables {
 export interface ViewCommentsQuery_viewComments_user {
   id: string;
   email: string;
+  username: string;
 }
 
 export interface ViewCommentsQuery_Comments {
@@ -259,6 +264,7 @@ export interface ViewCommentQueryVariables {
 export interface SearchListingsQuery_searchListings_owner {
   id: string;
   email: string;
+  username: string;
 }
 
 export interface SearchListingsQuery_searchListings {
@@ -329,6 +335,7 @@ export interface UpvoteListingMutationVariables {
 export interface ViewMessagesQuery_messages_user {
   id: string;
   email: string;
+  username: string;
 }
 
 export interface ViewMessagesQuery_messages {
@@ -355,6 +362,7 @@ export interface ViewMessagesQueryVariables {
 export interface NewMessageSubscription_newMessage_user {
   id: string;
   email: string;
+  username: string;
 }
 
 export interface NewMessageSubscription_newMessage {
