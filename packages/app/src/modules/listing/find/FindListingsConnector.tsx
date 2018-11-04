@@ -70,7 +70,7 @@ export class FindListingsConnector extends React.PureComponent<{}, State> {
                   image={l.pictureUrl ? { uri: l.pictureUrl } : undefined}
                 >
                   <Text style={{ marginBottom: 10 }}>
-                    owner: {l.owner.email}
+                    owner: {l.owner.username}
                   </Text>
                 </Card>
               )}

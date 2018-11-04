@@ -86,7 +86,7 @@ export class CommentConnector extends React.PureComponent<
                     }}
                   >
                     <p style={{ marginBottom: 0, fontSize: 12 }}>
-                      {m.user.email}
+                      {m.user.username}
                     </p>
                     <p style={{ marginTop: 0, fontSize: 14 }}>{m.text}</p>
                   </div>

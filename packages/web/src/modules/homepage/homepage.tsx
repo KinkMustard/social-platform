@@ -9,6 +9,7 @@ const meQuery = gql`
     me {
       id
       email
+      username
     }
   }
 `;

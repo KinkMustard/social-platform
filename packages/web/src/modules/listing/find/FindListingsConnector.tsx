@@ -55,7 +55,7 @@ class C extends React.PureComponent<
               }}
             >
               <p style={{ fontSize: 14, marginBottom: 0 }}>
-                posted by: {l.owner.email}
+                posted by: {l.owner.username}
               </p>
               <p style={{ fontSize: 28 }}>{l.name}</p>
 
