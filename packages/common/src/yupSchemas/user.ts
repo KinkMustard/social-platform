@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+export const usernameNotLongEnough = "username must be at least 3 characters";
 export const emailNotLongEnough = "email must be at least 3 characters";
 export const passwordNotLongEnough = "password must be at least 3 characters";
 export const invalidEmail = "email must be a valid email";
@@ -11,6 +12,11 @@ export const registerPasswordValidation = yup
   .required();
 
 export const validUserSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(3, emailNotLongEnough)
+    .max(255)
+    .required(),
   email: yup
     .string()
     .min(3, emailNotLongEnough)
@@ -27,7 +33,6 @@ export const loginSchema = yup.object().shape({
     .string()
     .min(3, invalidLogin)
     .max(255, invalidLogin)
-    .email(invalidLogin)
     .required(),
   password: yup
     .string()

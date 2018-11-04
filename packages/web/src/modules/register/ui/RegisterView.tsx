@@ -43,6 +43,16 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           <Form style={{ display: "flex" }}>
             <div style={{ width: 400, margin: "auto" }}>
               <Field
+                name="username"
+                prefix={
+                  (
+                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                  ) as any
+                }
+                placeholder="Username"
+                component={InputField}
+              />
+              <Field
                 name="email"
                 prefix={
                   (

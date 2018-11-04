@@ -52,4 +52,4 @@ export const RegisterController = graphql<
   Props,
   RegisterMutation,
   RegisterMutationVariables
->(registerMutation)(C);
+>(registerMutation)(C as any);
