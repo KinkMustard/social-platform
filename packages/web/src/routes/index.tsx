@@ -17,45 +17,74 @@ import { EditListingConnector } from "../modules/listing/edit/EditListingConnect
 import { Homepage } from "../modules/homepage/homepage";
 import { ModalContainer, ModalRoute } from "react-router-modal";
 import { ListingModalConnector } from "../modules/listing/find/ListingModalConnector";
+import { MainHeader } from "../modules/mainHeader/mainHeader";
+import { Layout } from "antd";
+
+const { Header, Content } = Layout;
 
 export const Routes = () => (
   <BrowserRouter>
     <React.Fragment>
-      <Switch>
-        <Route exact={true} path="/" component={Homepage} />
-        <Route exact={true} path="/register" component={RegisterConnector} />
-        <Route exact={true} path="/login" component={LoginConnector} />
-        <Route
-          exact={true}
-          path="/forgot-password"
-          component={ForgotPasswordConnector}
+      <Layout style={{ backgroundColor: "transparent" }}>
+        <Header
+          style={{
+            position: "fixed",
+            zIndex: 1,
+            width: "100%",
+            backgroundColor: "#40a9ff"
+          }}
+        >
+          <Route path="/" component={MainHeader} />
+        </Header>
+        <Switch>
+          <Content style={{ padding: "0 50px", marginTop: 64 }}>
+            <Route exact={true} path="/" component={Homepage} />
+
+            <Route
+              exact={true}
+              path="/register"
+              component={RegisterConnector}
+            />
+            <Route exact={true} path="/login" component={LoginConnector} />
+            <Route
+              exact={true}
+              path="/forgot-password"
+              component={ForgotPasswordConnector}
+            />
+            <Route
+              exact={true}
+              path="/change-password/:key"
+              component={ChangePasswordConnector}
+            />
+            <Route path="/m" component={TextPage} />
+            <Route path="/listings" component={FindListingsConnector} />
+            <Route path="/logout" component={Logout} />
+            <Route
+              exact={true}
+              path="/listing/:listingId"
+              component={ViewListingConnector}
+            />
+            <Route
+              path="/listing/:listingId/chat"
+              component={MessageConnector}
+            />
+            <Route
+              path="/listing/:listingId/edit"
+              component={EditListingConnector}
+            />
+            <AuthRoute
+              path="/create-listing"
+              component={CreateListingConnector}
+            />
+            <AuthRoute path="/delete-demo" component={DemoDelete} />
+          </Content>
+        </Switch>
+        <ModalRoute
+          component={ListingModalConnector}
+          path="/listings/:listingId/modal"
         />
-        <Route
-          exact={true}
-          path="/change-password/:key"
-          component={ChangePasswordConnector}
-        />
-        <Route path="/m" component={TextPage} />
-        <Route path="/listings" component={FindListingsConnector} />
-        <Route path="/logout" component={Logout} />
-        <Route
-          exact={true}
-          path="/listing/:listingId"
-          component={ViewListingConnector}
-        />
-        <Route path="/listing/:listingId/chat" component={MessageConnector} />
-        <Route
-          path="/listing/:listingId/edit"
-          component={EditListingConnector}
-        />
-        <AuthRoute path="/create-listing" component={CreateListingConnector} />
-        <AuthRoute path="/delete-demo" component={DemoDelete} />
-      </Switch>
-      <ModalRoute
-        component={ListingModalConnector}
-        path="/listings/:listingId/modal"
-      />
-      <ModalContainer />
+        <ModalContainer />
+      </Layout>
     </React.Fragment>
   </BrowserRouter>
 );

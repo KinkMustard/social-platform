@@ -29,7 +29,8 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)",
           position: "absolute",
           width: "100%",
-          height: "100%"
+          height: "100%",
+          left: 0
         }}
       >
         <Card
