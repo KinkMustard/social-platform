@@ -61,10 +61,11 @@ export class ListingForm extends React.PureComponent<Props, State> {
           console.log(values) || (
             <div
               style={{
-                background: "#ECECEC",
+                background: "#f5f5f5",
                 padding: "30px",
                 width: "100%",
-                height: "100vh"
+                height: "100vh",
+                left: 0
               }}
             >
               <Card
