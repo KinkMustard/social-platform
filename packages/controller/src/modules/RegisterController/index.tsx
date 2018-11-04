@@ -8,16 +8,16 @@ import { NormalizedErrorMap } from "../../types/NormalizedErrorMap";
 interface Props {
   children: (
     data: {
-      submit: (
-        values: RegisterMutationVariables
-      ) => Promise<NormalizedErrorMap | null>;
+    submit: (
+      values: RegisterMutationVariables
+    ) => Promise<NormalizedErrorMap | null>;
     }
   ) => JSX.Element | null;
 }
 
 class C extends React.PureComponent<
   ChildMutateProps<Props, RegisterMutation, RegisterMutationVariables>
-> {
+  > {
   submit = async (values: RegisterMutationVariables) => {
     console.log(values);
     const {
@@ -40,8 +40,12 @@ class C extends React.PureComponent<
 }
 
 const registerMutation = gql`
-  mutation RegisterMutation($email: String!, $password: String!) {
-    register(email: $email, password: $password) {
+  mutation RegisterMutation(
+    $username: String!
+    $email: String!
+    $password: String!
+  ) {
+    register(username: $username, email: $email, password: $password) {
       path
       message
     }
@@ -49,7 +53,7 @@ const registerMutation = gql`
 `;
 
 export const RegisterController = graphql<
-  Props,
-  RegisterMutation,
-  RegisterMutationVariables
+Props,
+RegisterMutation,
+RegisterMutationVariables
 >(registerMutation)(C as any);

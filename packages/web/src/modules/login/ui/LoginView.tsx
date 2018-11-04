@@ -50,7 +50,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
                     <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                   ) as any
                 }
-                placeholder="Email"
+                placeholder="Email or username"
                 component={InputField}
               />
               <Field

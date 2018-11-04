@@ -59,6 +59,7 @@ declare namespace GQL {
     __typename: "User";
     id: string;
     email: string;
+    username: string;
   }
 
   interface ISearchListingsInput {
@@ -129,6 +130,7 @@ declare namespace GQL {
   }
 
   interface IRegisterOnMutationArguments {
+    username: string;
     email: string;
     password: string;
   }
