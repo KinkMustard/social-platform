@@ -20,6 +20,7 @@ import { ListingModalConnector } from "../modules/listing/find/ListingModalConne
 import { MainHeader } from "../modules/mainHeader/mainHeader";
 import { Layout } from "antd";
 import { ListingSider } from "../modules/listingSider/listingSider";
+import { ProfilePage } from "../modules/profilePage/profilePage";
 
 const { Header, Content } = Layout;
 
@@ -68,6 +69,11 @@ export const Routes = () => (
               <Route path="/m" component={TextPage} />
               <Route path="/listings" component={FindListingsConnector} />
               <Route path="/logout" component={Logout} />
+              <Route
+                exact={true}
+                path="/profile/:username"
+                component={ProfilePage}
+              />
               <Route
                 exact={true}
                 path="/listing/:listingId"

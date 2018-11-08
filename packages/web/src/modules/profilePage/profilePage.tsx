@@ -17,8 +17,15 @@ const meQuery = gql`
 `;
 
 const { Header, Content, Footer } = Layout;
-export class Homepage extends React.PureComponent<RouteComponentProps<{}>> {
+export class ProfilePage extends React.PureComponent<
+  RouteComponentProps<{ username: string }>
+  > {
   render() {
+    const {
+      match: {
+        params: { username }
+      }
+    } = this.props;
     return (
       <Query query={meQuery}>
         {({ data }) => {
