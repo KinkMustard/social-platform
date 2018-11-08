@@ -53,7 +53,7 @@ export class ProfilePage extends React.PureComponent<
                         this.props.history.push("/login");
                       }}
                     >
-                      Login
+                      Login {username}
                     </Button>
                     <Button
                       style={{

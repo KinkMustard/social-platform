@@ -1,3 +1,5 @@
+
+
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -7,15 +9,12 @@
 
 export interface MeQuery_me {
   email: string;
-  username: string;
-  id: string;
-  upvoted: Array<string>;
-  downvoted: Array<string>;
 }
 
 export interface MeQuery {
   me: MeQuery_me | null;
 }
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -30,15 +29,46 @@ export interface ForgotPasswordChangeMutation_forgotPasswordChange {
 }
 
 export interface ForgotPasswordChangeMutation {
-  forgotPasswordChange:
-    | ForgotPasswordChangeMutation_forgotPasswordChange[]
-    | null;
+  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
 }
 
 export interface ForgotPasswordChangeMutationVariables {
   newPassword: string;
   key: string;
 }
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: CreateCommentMutation
+// ====================================================
+
+export interface CreateCommentMutation {
+  createComment: boolean;
+}
+
+export interface CreateCommentMutationVariables {
+  comment: CommentInput;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: CreateMessageMutation
+// ====================================================
+
+export interface CreateMessageMutation {
+  createMessage: boolean;
+}
+
+export interface CreateMessageMutationVariables {
+  message: MessageInput;
+}
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -58,6 +88,7 @@ export interface CreateListingMutationVariables {
   upvotes: number;
   downvotes: number;
 }
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -87,6 +118,7 @@ export interface FindListingsQuery {
   findListings: FindListingsQuery_findListings[];
 }
 
+
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -102,35 +134,6 @@ export interface SendForgotPasswordEmailMutationVariables {
   email: string;
 }
 
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: CreateMessageMutation
-// ====================================================
-
-export interface CreateMessageMutation {
-  createMessage: boolean;
-}
-
-export interface CreateMessageMutationVariables {
-  message: MessageInput;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: CreateMessageMutation
-// ====================================================
-
-export interface CreateCommentMutation {
-  createComment: boolean;
-}
-
-export interface CreateCommentMutationVariables {
-  comment: CommentInput;
-}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -158,6 +161,7 @@ export interface LoginMutationVariables {
   password: string;
 }
 
+
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -168,6 +172,7 @@ export interface LoginMutationVariables {
 export interface LogoutMutation {
   logout: boolean | null;
 }
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -186,73 +191,11 @@ export interface RegisterMutation {
 }
 
 export interface RegisterMutationVariables {
+  username: string;
   email: string;
   password: string;
-  username: string;
 }
 
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: ViewListingQuery
-// ====================================================
-
-export interface ViewListingQuery_viewListing_owner {
-  id: string;
-  email: string;
-  username: string;
-}
-
-export interface ViewListingQuery_viewListing {
-  id: string;
-  name: string;
-  datePosted: string;
-  description: string;
-  upvotes: number;
-  downvotes: number;
-  pictureUrl: string | null;
-  owner: ViewListingQuery_viewListing_owner;
-}
-
-export interface ViewListingQuery {
-  viewListing: ViewListingQuery_viewListing | null;
-}
-
-export interface ViewListingQueryVariables {
-  id: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: ViewCommentQuery
-// ====================================================
-
-export interface ViewCommentsQuery_viewComments_user {
-  id: string;
-  email: string;
-  username: string;
-}
-
-export interface ViewCommentsQuery_Comments {
-  id: string;
-  text: string;
-  datePosted: string;
-  listingId: string;
-  upvotes: number;
-  downvotes: number;
-  user: ViewCommentsQuery_viewComments_user;
-}
-
-export interface ViewCommentsQuery {
-  comments: ViewCommentsQuery_Comments[] | null;
-}
-
-export interface ViewCommentQueryVariables {
-  listingId: string;
-}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -287,6 +230,7 @@ export interface SearchListingsQueryVariables {
   limit: number;
 }
 
+
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -302,6 +246,7 @@ export interface UpdateListingMutationVariables {
   listingId: string;
   input: UpdateListingInput;
 }
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -319,11 +264,76 @@ export interface UpvoteListingMutationVariables {
   upvotes: number;
   downvotes: number;
   userId: string;
-  upvoted: Array<string>;
-  downvoted: Array<string>;
+  upvoted?: string[] | null;
+  downvoted?: string[] | null;
   voteScenario: string;
   voteTarget: string;
 }
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: ViewCommentsQuery
+// ====================================================
+
+export interface ViewCommentsQuery_comments_user {
+  id: string;
+  email: string;
+  username: string;
+}
+
+export interface ViewCommentsQuery_comments {
+  id: string;
+  text: string;
+  datePosted: string;
+  listingId: string;
+  upvotes: number;
+  downvotes: number;
+  user: ViewCommentsQuery_comments_user;
+}
+
+export interface ViewCommentsQuery {
+  comments: ViewCommentsQuery_comments[];
+}
+
+export interface ViewCommentsQueryVariables {
+  listingId: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: ViewListingQuery
+// ====================================================
+
+export interface ViewListingQuery_viewListing_owner {
+  id: string;
+  email: string;
+  username: string;
+}
+
+export interface ViewListingQuery_viewListing {
+  id: string;
+  name: string;
+  description: string;
+  upvotes: number;
+  downvotes: number;
+  pictureUrl: string | null;
+  owner: ViewListingQuery_viewListing_owner;
+}
+
+export interface ViewListingQuery {
+  viewListing: ViewListingQuery_viewListing | null;
+}
+
+export interface ViewListingQueryVariables {
+  id: string;
+}
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -351,6 +361,7 @@ export interface ViewMessagesQuery {
 export interface ViewMessagesQueryVariables {
   listingId: string;
 }
+
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -386,26 +397,26 @@ export interface NewMessageSubscriptionVariables {
 // START Enums and Input Objects
 //==============================================================
 
-//
-export interface MessageInput {
-  text: string;
-  listingId: string;
-}
-
-//
+// 
 export interface CommentInput {
   text: string;
   listingId: string;
 }
 
-//
+// 
+export interface MessageInput {
+  text: string;
+  listingId: string;
+}
+
+// 
 export interface SearchListingsInput {
   downvotes?: number | null;
   upvotes?: number | null;
   name?: string | null;
 }
 
-//
+// 
 export interface UpdateListingInput {
   name?: string | null;
   picture?: any | null;

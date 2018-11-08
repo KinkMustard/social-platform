@@ -3,9 +3,9 @@ import * as React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import {
-  ViewCommentsQuery_Comments,
+  ViewCommentsQuery_comments,
   ViewCommentsQuery,
-  ViewCommentQueryVariables
+  ViewCommentsQueryVariables
 } from "../../schemaTypes";
 
 export const viewCommentsQuery = gql`
@@ -27,7 +27,7 @@ export const viewCommentsQuery = gql`
 `;
 
 export interface WithViewComments {
-  comments: ViewCommentsQuery_Comments[] | null;
+  comments: ViewCommentsQuery_comments[] | null;
   loading: boolean;
   refetchComments: any;
 }
@@ -41,12 +41,12 @@ export class ViewComments extends React.PureComponent<Props> {
   render() {
     const { children, listingId } = this.props;
     return (
-      <Query<ViewCommentsQuery, ViewCommentQueryVariables>
+      <Query<ViewCommentsQuery, ViewCommentsQueryVariables>
         query={viewCommentsQuery}
         variables={{ listingId }}
       >
         {({ data, loading, refetch }) => {
-          let comments: ViewCommentsQuery_Comments[] | null = null;
+          let comments: ViewCommentsQuery_comments[] | null = null;
           let refetchComments: any;
 
           if (data && data.comments) {
