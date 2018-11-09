@@ -3,7 +3,7 @@ import { User } from "../../../entity/User";
 
 export const resolvers: ResolverMap = {
   Query: {
-    user: async (_, { username }) => {
+    viewUser: async (_, { username }) => {
       return User.findOne({
         where: {
           username

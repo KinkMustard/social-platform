@@ -16,3 +16,4 @@ export * from "./modules/SearchListings";
 export * from "./modules/UpvoteListing";
 export * from "./modules/ViewComments";
 export * from "./modules/CreateComment";
+export * from "./modules/ViewUser";

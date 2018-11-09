@@ -1,5 +1,3 @@
-
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -15,7 +13,6 @@ export interface MeQuery {
   me: MeQuery_me | null;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -29,14 +26,15 @@ export interface ForgotPasswordChangeMutation_forgotPasswordChange {
 }
 
 export interface ForgotPasswordChangeMutation {
-  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
+  forgotPasswordChange:
+    | ForgotPasswordChangeMutation_forgotPasswordChange[]
+    | null;
 }
 
 export interface ForgotPasswordChangeMutationVariables {
   newPassword: string;
   key: string;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -52,43 +50,6 @@ export interface CreateCommentMutation {
 export interface CreateCommentMutationVariables {
   comment: CommentInput;
 }
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: CreateMessageMutation
-// ====================================================
-
-export interface CreateMessageMutation {
-  createMessage: boolean;
-}
-
-export interface CreateMessageMutationVariables {
-  message: MessageInput;
-}
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: CreateListingMutation
-// ====================================================
-
-export interface CreateListingMutation {
-  createListing: boolean;
-}
-
-export interface CreateListingMutationVariables {
-  picture?: any | null;
-  name: string;
-  description: string;
-  upvotes: number;
-  downvotes: number;
-}
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -118,22 +79,39 @@ export interface FindListingsQuery {
   findListings: FindListingsQuery_findListings[];
 }
 
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: CreateListingMutation
+// ====================================================
+
+export interface CreateListingMutation {
+  createListing: boolean;
+}
+
+export interface CreateListingMutationVariables {
+  picture?: any | null;
+  name: string;
+  description: string;
+  upvotes: number;
+  downvotes: number;
+}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: SendForgotPasswordEmailMutation
+// GraphQL mutation operation: CreateMessageMutation
 // ====================================================
 
-export interface SendForgotPasswordEmailMutation {
-  sendForgotPasswordEmail: boolean | null;
+export interface CreateMessageMutation {
+  createMessage: boolean;
 }
 
-export interface SendForgotPasswordEmailMutationVariables {
-  email: string;
+export interface CreateMessageMutationVariables {
+  message: MessageInput;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -161,7 +139,6 @@ export interface LoginMutationVariables {
   password: string;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -173,6 +150,20 @@ export interface LogoutMutation {
   logout: boolean | null;
 }
 
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: SendForgotPasswordEmailMutation
+// ====================================================
+
+export interface SendForgotPasswordEmailMutation {
+  sendForgotPasswordEmail: boolean | null;
+}
+
+export interface SendForgotPasswordEmailMutationVariables {
+  email: string;
+}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -196,6 +187,43 @@ export interface RegisterMutationVariables {
   password: string;
 }
 
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: UpdateListingMutation
+// ====================================================
+
+export interface UpdateListingMutation {
+  updateListing: boolean;
+}
+
+export interface UpdateListingMutationVariables {
+  listingId: string;
+  input: UpdateListingInput;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: UpvoteListingMutation
+// ====================================================
+
+export interface UpvoteListingMutation {
+  upvoteListing: boolean;
+}
+
+export interface UpvoteListingMutationVariables {
+  listingId: string;
+  upvotes: number;
+  downvotes: number;
+  userId: string;
+  upvoted?: string[] | null;
+  downvoted?: string[] | null;
+  voteScenario: string;
+  voteTarget: string;
+}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -230,47 +258,6 @@ export interface SearchListingsQueryVariables {
   limit: number;
 }
 
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: UpdateListingMutation
-// ====================================================
-
-export interface UpdateListingMutation {
-  updateListing: boolean;
-}
-
-export interface UpdateListingMutationVariables {
-  listingId: string;
-  input: UpdateListingInput;
-}
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: UpvoteListingMutation
-// ====================================================
-
-export interface UpvoteListingMutation {
-  upvoteListing: boolean;
-}
-
-export interface UpvoteListingMutationVariables {
-  listingId: string;
-  upvotes: number;
-  downvotes: number;
-  userId: string;
-  upvoted?: string[] | null;
-  downvoted?: string[] | null;
-  voteScenario: string;
-  voteTarget: string;
-}
-
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -301,7 +288,6 @@ export interface ViewCommentsQuery {
 export interface ViewCommentsQueryVariables {
   listingId: string;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -334,6 +320,28 @@ export interface ViewListingQueryVariables {
   id: string;
 }
 
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: ViewUserQuery
+// ====================================================
+
+export interface ViewUserQuery_viewUser {
+  id: string;
+  email: string;
+  username: string;
+  upvoted?: string[] | null;
+  downvoted?: string[] | null;
+}
+
+export interface ViewUserQuery {
+  viewUser: ViewUserQuery_viewUser | null;
+}
+
+export interface ViewUserQueryVariables {
+  username: string;
+}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -361,7 +369,6 @@ export interface ViewMessagesQuery {
 export interface ViewMessagesQueryVariables {
   listingId: string;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -397,26 +404,19 @@ export interface NewMessageSubscriptionVariables {
 // START Enums and Input Objects
 //==============================================================
 
-// 
+//
 export interface CommentInput {
   text: string;
   listingId: string;
 }
 
-// 
+//
 export interface MessageInput {
   text: string;
   listingId: string;
 }
 
-// 
-export interface SearchListingsInput {
-  downvotes?: number | null;
-  upvotes?: number | null;
-  name?: string | null;
-}
-
-// 
+//
 export interface UpdateListingInput {
   name?: string | null;
   picture?: any | null;
@@ -424,6 +424,13 @@ export interface UpdateListingInput {
   description?: string | null;
   upvotes?: number | null;
   downvotes?: number | null;
+}
+
+//
+export interface SearchListingsInput {
+  downvotes?: number | null;
+  upvotes?: number | null;
+  name?: string | null;
 }
 
 //==============================================================

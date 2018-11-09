@@ -28,7 +28,7 @@ searchListings: Array<IListing>;
 viewListing: IListing | null;
 messages: Array<IMessage>;
 me: IUser | null;
-user: IUser | null;
+viewUser: IUser | null;
 }
 
 interface ICommentsOnQueryArguments {
@@ -49,7 +49,7 @@ interface IMessagesOnQueryArguments {
 listingId: string;
 }
 
-interface IUserOnQueryArguments {
+interface IViewUserOnQueryArguments {
 username: string;
 }
 
