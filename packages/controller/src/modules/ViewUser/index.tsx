@@ -10,7 +10,7 @@ import {
 
 export const viewUserQuery = gql`
   query ViewUserQuery($username: String!) {
-    ViewUser(username: $username) {
+    viewUser(username: $username) {
       id
       email
       username

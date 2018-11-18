@@ -1,22 +1,6 @@
 import * as React from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { RouteComponentProps, Redirect } from "react-router-dom";
-import { Layout, Button } from "antd";
-
-const meQuery = gql`
-  {
-    me {
-      id
-      email
-      username
-      upvoted
-      downvoted
-    }
-  }
-`;
-
-const { Header, Content, Footer } = Layout;
+import { ViewUser } from "@abb/controller";
+import { RouteComponentProps } from "react-router-dom";
 export class ProfilePage extends React.PureComponent<
   RouteComponentProps<{ username: string }>
   > {
@@ -27,62 +11,19 @@ export class ProfilePage extends React.PureComponent<
       }
     } = this.props;
     return (
-      <Query query={meQuery}>
-        {({ data }) => {
-          if (data && data.me) {
-            return <Redirect to="/listings" />;
+      <ViewUser username={username}>
+        {data => {
+          if (!data.user) {
+            return <div>user not found</div>;
           } else {
             return (
-              <Layout>
-                <Header>
-                  <div
-                    style={{
-                      display: "flex",
-                      height: "100%",
-                      width: "100%",
-                      flexDirection: "row-reverse"
-                    }}
-                  >
-                    <Button
-                      style={{
-                        marginTop: "18px",
-                        marginLeft: "20px"
-                      }}
-                      type="primary"
-                      onClick={() => {
-                        this.props.history.push("/login");
-                      }}
-                    >
-                      Login {username}
-                    </Button>
-                    <Button
-                      style={{
-                        marginTop: "18px"
-                      }}
-                      type="danger"
-                      onClick={() => {
-                        this.props.history.push("/register");
-                      }}
-                    >
-                      Register
-                    </Button>
-                  </div>
-                </Header>
-                <Content style={{ padding: "0 50px" }}>
-                  <div
-                    style={{ background: "#fff", padding: 24, minHeight: 280 }}
-                  >
-                    username:
-                  </div>
-                </Content>
-                <Footer style={{ textAlign: "center" }}>
-                  this is a footer
-                </Footer>
-              </Layout>
+              <div style={{ background: "#fff", padding: 24, minHeight: 2080 }}>
+                hello {data.user.username}
+              </div>
             );
           }
         }}
-      </Query>
+      </ViewUser>
     );
   }
 }
