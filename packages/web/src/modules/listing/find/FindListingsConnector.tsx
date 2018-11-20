@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Card, Icon } from "antd";
+import { Card, Icon, Avatar, Popover, Button } from "antd";
 import {
   withFindListings,
   WithFindListings,
-  ViewComments
+  ViewComments,
+  ViewUser
 } from "@abb/controller";
 import { RouteComponentProps } from "react-router-dom";
 import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";
@@ -54,9 +55,80 @@ class C extends React.PureComponent<
                 // this.showModal();
               }}
             >
-              <p style={{ fontSize: 14, marginBottom: 0 }}>
-                posted by: {l.owner.username}
-              </p>
+              <div style={{ fontSize: 18, marginBottom: 0 }}>
+                <Popover
+                  content={
+                    <ViewUser username={l.owner.username}>
+                      {data => {
+                        if (!data.user) {
+                          return <div>user not found</div>;
+                        } else {
+                          return (
+                            <React.Fragment>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center"
+                                }}
+                              >
+                                <Avatar
+                                  shape="square"
+                                  size="large"
+                                  style={{
+                                    color: "#f56a00",
+                                    backgroundColor: "#fde3cf",
+                                    marginRight: 6
+                                  }}
+                                >
+                                  P
+                                </Avatar>
+                                <div
+                                  style={{ fontWeight: "bold", fontSize: 24 }}
+                                >
+                                  {data.user.username}
+                                </div>
+                              </div>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center"
+                                }}
+                              >
+                                <div style={{ fontWeight: "bold" }}>
+                                  {data.user.email}
+                                </div>
+                              </div>
+                            </React.Fragment>
+                          );
+                        }
+                      }}
+                    </ViewUser>
+                  }
+                  trigger="hover"
+                  placement="bottom"
+                  // style={{ height: 100 }}
+                >
+                  <Button
+                    onClick={(e: any) => {
+                      e.stopPropagation();
+                      this.props.history.push(`/profile/${l.owner.username}`);
+                    }}
+                    style={{ height: 50, marginTop: -10 }}
+                  >
+                    <Avatar
+                      shape="square"
+                      style={{
+                        color: "#f56a00",
+                        backgroundColor: "#fde3cf",
+                        marginRight: 6
+                      }}
+                    >
+                      U
+                    </Avatar>
+                    {l.owner.username}
+                  </Button>
+                </Popover>
+              </div>
               <p style={{ fontSize: 28 }}>{l.name}</p>
 
               {l.pictureUrl && (
