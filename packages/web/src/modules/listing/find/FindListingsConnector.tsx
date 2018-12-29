@@ -123,7 +123,7 @@ class C extends React.PureComponent<
                         marginRight: 6
                       }}
                     >
-                      U
+                      {l.owner.username.charAt(0).toUpperCase()}
                     </Avatar>
                     {l.owner.username}
                   </Button>
