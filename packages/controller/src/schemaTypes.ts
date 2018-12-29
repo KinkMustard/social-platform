@@ -6,11 +6,11 @@
 // ====================================================
 
 export interface MeQuery_me {
-  email: string;
+  email: string
 }
 
 export interface MeQuery {
-  me: MeQuery_me | null;
+  me: MeQuery_me | null
 }
 
 /* tslint:disable */
@@ -21,19 +21,19 @@ export interface MeQuery {
 // ====================================================
 
 export interface ForgotPasswordChangeMutation_forgotPasswordChange {
-  path: string;
-  message: string;
+  path: string
+  message: string
 }
 
 export interface ForgotPasswordChangeMutation {
   forgotPasswordChange:
     | ForgotPasswordChangeMutation_forgotPasswordChange[]
-    | null;
+    | null
 }
 
 export interface ForgotPasswordChangeMutationVariables {
-  newPassword: string;
-  key: string;
+  newPassword: string
+  key: string
 }
 
 /* tslint:disable */
@@ -44,11 +44,11 @@ export interface ForgotPasswordChangeMutationVariables {
 // ====================================================
 
 export interface CreateCommentMutation {
-  createComment: boolean;
+  createComment: boolean
 }
 
 export interface CreateCommentMutationVariables {
-  comment: CommentInput;
+  comment: CommentInput
 }
 
 /* tslint:disable */
@@ -59,24 +59,24 @@ export interface CreateCommentMutationVariables {
 // ====================================================
 
 export interface FindListingsQuery_findListings_owner {
-  id: string;
-  email: string;
-  username: string;
+  id: string
+  email: string
+  username: string
 }
 
 export interface FindListingsQuery_findListings {
-  id: string;
-  name: string;
-  datePosted: string;
-  description: string;
-  upvotes: number;
-  downvotes: number;
-  pictureUrl: string | null;
-  owner: FindListingsQuery_findListings_owner;
+  id: string
+  name: string
+  datePosted: string
+  description: string
+  upvotes: number
+  downvotes: number
+  pictureUrl: string | null
+  owner: FindListingsQuery_findListings_owner
 }
 
 export interface FindListingsQuery {
-  findListings: FindListingsQuery_findListings[];
+  findListings: FindListingsQuery_findListings[]
 }
 
 /* tslint:disable */
@@ -87,15 +87,15 @@ export interface FindListingsQuery {
 // ====================================================
 
 export interface CreateListingMutation {
-  createListing: boolean;
+  createListing: boolean
 }
 
 export interface CreateListingMutationVariables {
-  picture?: any | null;
-  name: string;
-  description: string;
-  upvotes: number;
-  downvotes: number;
+  picture?: any | null
+  name: string
+  description: string
+  upvotes: number
+  downvotes: number
 }
 
 /* tslint:disable */
@@ -106,11 +106,11 @@ export interface CreateListingMutationVariables {
 // ====================================================
 
 export interface CreateMessageMutation {
-  createMessage: boolean;
+  createMessage: boolean
 }
 
 export interface CreateMessageMutationVariables {
-  message: MessageInput;
+  message: MessageInput
 }
 
 /* tslint:disable */
@@ -121,22 +121,22 @@ export interface CreateMessageMutationVariables {
 // ====================================================
 
 export interface LoginMutation_login_errors {
-  path: string;
-  message: string;
+  path: string
+  message: string
 }
 
 export interface LoginMutation_login {
-  errors: LoginMutation_login_errors[] | null;
-  sessionId: string | null;
+  errors: LoginMutation_login_errors[] | null
+  sessionId: string | null
 }
 
 export interface LoginMutation {
-  login: LoginMutation_login;
+  login: LoginMutation_login
 }
 
 export interface LoginMutationVariables {
-  email: string;
-  password: string;
+  usernameOrEmail: string
+  password: string
 }
 
 /* tslint:disable */
@@ -147,7 +147,7 @@ export interface LoginMutationVariables {
 // ====================================================
 
 export interface LogoutMutation {
-  logout: boolean | null;
+  logout: boolean | null
 }
 
 /* tslint:disable */
@@ -158,11 +158,11 @@ export interface LogoutMutation {
 // ====================================================
 
 export interface SendForgotPasswordEmailMutation {
-  sendForgotPasswordEmail: boolean | null;
+  sendForgotPasswordEmail: boolean | null
 }
 
 export interface SendForgotPasswordEmailMutationVariables {
-  email: string;
+  email: string
 }
 
 /* tslint:disable */
@@ -173,18 +173,18 @@ export interface SendForgotPasswordEmailMutationVariables {
 // ====================================================
 
 export interface RegisterMutation_register {
-  path: string;
-  message: string;
+  path: string
+  message: string
 }
 
 export interface RegisterMutation {
-  register: RegisterMutation_register[] | null;
+  register: RegisterMutation_register[] | null
 }
 
 export interface RegisterMutationVariables {
-  username: string;
-  email: string;
-  password: string;
+  username: string
+  email: string
+  password: string
 }
 
 /* tslint:disable */
@@ -195,12 +195,12 @@ export interface RegisterMutationVariables {
 // ====================================================
 
 export interface UpdateListingMutation {
-  updateListing: boolean;
+  updateListing: boolean
 }
 
 export interface UpdateListingMutationVariables {
-  listingId: string;
-  input: UpdateListingInput;
+  listingId: string
+  input: UpdateListingInput
 }
 
 /* tslint:disable */
@@ -211,18 +211,18 @@ export interface UpdateListingMutationVariables {
 // ====================================================
 
 export interface UpvoteListingMutation {
-  upvoteListing: boolean;
+  upvoteListing: boolean
 }
 
 export interface UpvoteListingMutationVariables {
-  listingId: string;
-  upvotes: number;
-  downvotes: number;
-  userId: string;
-  upvoted?: string[] | null;
-  downvoted?: string[] | null;
-  voteScenario: string;
-  voteTarget: string;
+  listingId: string
+  upvotes: number
+  downvotes: number
+  userId: string
+  upvoted?: string[] | null
+  downvoted?: string[] | null
+  voteScenario: string
+  voteTarget: string
 }
 
 /* tslint:disable */
@@ -233,29 +233,29 @@ export interface UpvoteListingMutationVariables {
 // ====================================================
 
 export interface SearchListingsQuery_searchListings_owner {
-  id: string;
-  email: string;
-  username: string;
+  id: string
+  email: string
+  username: string
 }
 
 export interface SearchListingsQuery_searchListings {
-  id: string;
-  name: string;
-  description: string;
-  upvotes: number;
-  downvotes: number;
-  pictureUrl: string | null;
-  owner: SearchListingsQuery_searchListings_owner;
+  id: string
+  name: string
+  description: string
+  upvotes: number
+  downvotes: number
+  pictureUrl: string | null
+  owner: SearchListingsQuery_searchListings_owner
 }
 
 export interface SearchListingsQuery {
-  searchListings: SearchListingsQuery_searchListings[];
+  searchListings: SearchListingsQuery_searchListings[]
 }
 
 export interface SearchListingsQueryVariables {
-  input?: SearchListingsInput | null;
-  offset: number;
-  limit: number;
+  input?: SearchListingsInput | null
+  offset: number
+  limit: number
 }
 
 /* tslint:disable */
@@ -266,27 +266,27 @@ export interface SearchListingsQueryVariables {
 // ====================================================
 
 export interface ViewCommentsQuery_comments_user {
-  id: string;
-  email: string;
-  username: string;
+  id: string
+  email: string
+  username: string
 }
 
 export interface ViewCommentsQuery_comments {
-  id: string;
-  text: string;
-  datePosted: string;
-  listingId: string;
-  upvotes: number;
-  downvotes: number;
-  user: ViewCommentsQuery_comments_user;
+  id: string
+  text: string
+  datePosted: string
+  listingId: string
+  upvotes: number
+  downvotes: number
+  user: ViewCommentsQuery_comments_user
 }
 
 export interface ViewCommentsQuery {
-  comments: ViewCommentsQuery_comments[];
+  comments: ViewCommentsQuery_comments[]
 }
 
 export interface ViewCommentsQueryVariables {
-  listingId: string;
+  listingId: string
 }
 
 /* tslint:disable */
@@ -297,27 +297,27 @@ export interface ViewCommentsQueryVariables {
 // ====================================================
 
 export interface ViewListingQuery_viewListing_owner {
-  id: string;
-  email: string;
-  username: string;
+  id: string
+  email: string
+  username: string
 }
 
 export interface ViewListingQuery_viewListing {
-  id: string;
-  name: string;
-  description: string;
-  upvotes: number;
-  downvotes: number;
-  pictureUrl: string | null;
-  owner: ViewListingQuery_viewListing_owner;
+  id: string
+  name: string
+  description: string
+  upvotes: number
+  downvotes: number
+  pictureUrl: string | null
+  owner: ViewListingQuery_viewListing_owner
 }
 
 export interface ViewListingQuery {
-  viewListing: ViewListingQuery_viewListing | null;
+  viewListing: ViewListingQuery_viewListing | null
 }
 
 export interface ViewListingQueryVariables {
-  id: string;
+  id: string
 }
 
 /* tslint:disable */
@@ -328,19 +328,19 @@ export interface ViewListingQueryVariables {
 // ====================================================
 
 export interface ViewUserQuery_viewUser {
-  id: string;
-  email: string;
-  username: string;
-  upvoted?: string[] | null;
-  downvoted?: string[] | null;
+  id: string
+  email: string
+  username: string
+  upvoted?: string[] | null
+  downvoted?: string[] | null
 }
 
 export interface ViewUserQuery {
-  viewUser: ViewUserQuery_viewUser | null;
+  viewUser: ViewUserQuery_viewUser | null
 }
 
 export interface ViewUserQueryVariables {
-  username: string;
+  username: string
 }
 
 /* tslint:disable */
@@ -351,23 +351,23 @@ export interface ViewUserQueryVariables {
 // ====================================================
 
 export interface ViewMessagesQuery_messages_user {
-  id: string;
-  email: string;
-  username: string;
+  id: string
+  email: string
+  username: string
 }
 
 export interface ViewMessagesQuery_messages {
-  text: string;
-  user: ViewMessagesQuery_messages_user;
-  listingId: string;
+  text: string
+  user: ViewMessagesQuery_messages_user
+  listingId: string
 }
 
 export interface ViewMessagesQuery {
-  messages: ViewMessagesQuery_messages[];
+  messages: ViewMessagesQuery_messages[]
 }
 
 export interface ViewMessagesQueryVariables {
-  listingId: string;
+  listingId: string
 }
 
 /* tslint:disable */
@@ -378,23 +378,23 @@ export interface ViewMessagesQueryVariables {
 // ====================================================
 
 export interface NewMessageSubscription_newMessage_user {
-  id: string;
-  email: string;
-  username: string;
+  id: string
+  email: string
+  username: string
 }
 
 export interface NewMessageSubscription_newMessage {
-  text: string;
-  user: NewMessageSubscription_newMessage_user;
-  listingId: string;
+  text: string
+  user: NewMessageSubscription_newMessage_user
+  listingId: string
 }
 
 export interface NewMessageSubscription {
-  newMessage: NewMessageSubscription_newMessage;
+  newMessage: NewMessageSubscription_newMessage
 }
 
 export interface NewMessageSubscriptionVariables {
-  listingId: string;
+  listingId: string
 }
 
 /* tslint:disable */
@@ -406,31 +406,31 @@ export interface NewMessageSubscriptionVariables {
 
 //
 export interface CommentInput {
-  text: string;
-  listingId: string;
+  text: string
+  listingId: string
 }
 
 //
 export interface MessageInput {
-  text: string;
-  listingId: string;
+  text: string
+  listingId: string
 }
 
 //
 export interface UpdateListingInput {
-  name?: string | null;
-  picture?: any | null;
-  pictureUrl?: string | null;
-  description?: string | null;
-  upvotes?: number | null;
-  downvotes?: number | null;
+  name?: string | null
+  picture?: any | null
+  pictureUrl?: string | null
+  description?: string | null
+  upvotes?: number | null
+  downvotes?: number | null
 }
 
 //
 export interface SearchListingsInput {
-  downvotes?: number | null;
-  upvotes?: number | null;
-  name?: string | null;
+  downvotes?: number | null
+  upvotes?: number | null
+  name?: string | null
 }
 
 //==============================================================

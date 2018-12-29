@@ -1,24 +1,24 @@
-import * as React from "react";
+import * as React from "react"
 import {
   graphql,
   ChildMutateProps,
   withApollo,
   WithApolloClient
-} from "react-apollo";
-import gql from "graphql-tag";
-import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
-import { normalizeErrors } from "../../utils/normalizeErrors";
-import { NormalizedErrorMap } from "../../types/NormalizedErrorMap";
+} from "react-apollo"
+import gql from "graphql-tag"
+import { LoginMutation, LoginMutationVariables } from "../../schemaTypes"
+import { normalizeErrors } from "../../utils/normalizeErrors"
+import { NormalizedErrorMap } from "../../types/NormalizedErrorMap"
 
 interface Props {
-  onSessionId?: (sessionId: string) => void;
+  onSessionId?: (sessionId: string) => void
   children: (
     data: {
       submit: (
         values: LoginMutationVariables
-      ) => Promise<NormalizedErrorMap | null>;
+      ) => Promise<NormalizedErrorMap | null>
     }
-  ) => JSX.Element | null;
+  ) => JSX.Element | null
 }
 
 class C extends React.PureComponent<
@@ -29,40 +29,40 @@ class C extends React.PureComponent<
   >
 > {
   submit = async (values: LoginMutationVariables) => {
-    console.log(values);
+    console.log(values)
     const {
       data: {
         login: { errors, sessionId }
       }
     } = await this.props.mutate({
       variables: values
-    });
-    console.log("response: ", errors, sessionId);
+    })
+    console.log("response: ", errors, sessionId)
 
     if (errors) {
       // show errors
       // [{path: 'email': message: 'inval...'}]
       // {email: 'invalid....'}
-      return normalizeErrors(errors);
+      return normalizeErrors(errors)
     }
 
     if (sessionId && this.props.onSessionId) {
-      this.props.onSessionId(sessionId);
+      this.props.onSessionId(sessionId)
     }
 
-    await this.props.client.resetStore();
+    await this.props.client.resetStore()
 
-    return null;
-  };
+    return null
+  }
 
   render() {
-    return this.props.children({ submit: this.submit });
+    return this.props.children({ submit: this.submit })
   }
 }
 
 const loginMutation = gql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation LoginMutation($usernameOrEmail: String!, $password: String!) {
+    login(usernameOrEmail: $usernameOrEmail, password: $password) {
       errors {
         path
         message
@@ -70,10 +70,10 @@ const loginMutation = gql`
       sessionId
     }
   }
-`;
+`
 
 export const LoginController = graphql<
   Props,
   LoginMutation,
   LoginMutationVariables
->(loginMutation)(withApollo<Props>(C as any));
+>(loginMutation)(withApollo<Props>(C as any))

@@ -1,22 +1,22 @@
-import * as React from "react";
-import { Form as AntForm, Icon, Button, Card } from "antd";
-import { withFormik, FormikProps, Field, Form } from "formik";
-import { loginSchema } from "@abb/common";
-import { Link } from "react-router-dom";
-import { NormalizedErrorMap } from "@abb/controller";
+import * as React from "react"
+import { Form as AntForm, Icon, Button, Card } from "antd"
+import { withFormik, FormikProps, Field, Form } from "formik"
+import { loginSchema } from "@abb/common"
+import { Link } from "react-router-dom"
+import { NormalizedErrorMap } from "@abb/controller"
 
-import { InputField } from "../../shared/InputField";
+import { InputField } from "../../shared/InputField"
 
-const FormItem = AntForm.Item;
+const FormItem = AntForm.Item
 
 interface FormValues {
-  email: string;
-  password: string;
+  usernameOrEmail: string
+  password: string
 }
 
 interface Props {
-  onFinish: () => void;
-  submit: (values: FormValues) => Promise<NormalizedErrorMap | null>;
+  onFinish: () => void
+  submit: (values: FormValues) => Promise<NormalizedErrorMap | null>
 }
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
@@ -45,13 +45,13 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           <Form style={{ display: "flex" }}>
             <div style={{ width: 400, margin: "auto" }}>
               <Field
-                name="email"
+                name="usernameOrEmail"
                 prefix={
                   (
                     <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                   ) as any
                 }
-                placeholder="Email or username"
+                placeholder="Username or email"
                 component={InputField}
               />
               <Field
@@ -84,7 +84,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           </Form>
         </Card>
       </div>
-    );
+    )
   }
 }
 
@@ -92,13 +92,14 @@ export const LoginView = withFormik<Props, FormValues>({
   validationSchema: loginSchema,
   validateOnChange: false,
   validateOnBlur: false,
-  mapPropsToValues: () => ({ email: "", password: "" }),
+  mapPropsToValues: () => ({ usernameOrEmail: "", password: "" }),
   handleSubmit: async (values, { props, setErrors }) => {
-    const errors = await props.submit(values);
+    const errors = await props.submit(values)
+    console.log("logged in submitted")
     if (errors) {
-      setErrors(errors);
+      setErrors(errors)
     } else {
-      props.onFinish();
+      props.onFinish()
     }
   }
-})(C);
+})(C)
