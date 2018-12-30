@@ -18,9 +18,10 @@
   "dependencies": {
     "@abb/common": "1.0.0",
     "@abb/controller": "1.0.0",
+    "@types/antd": "^1.0.0",
     "@types/date-fns": "^2.6.0",
     "@types/lodash": "^4.14.116",
-    "antd": "^3.6.2",
+    "antd": "^3.11.6",
     "apollo-cache-inmemory": "^1.2.4",
     "apollo-client": "^2.3.4",
     "apollo-link": "^1.2.2",

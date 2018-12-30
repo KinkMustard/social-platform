@@ -1,8 +1,9 @@
-import * as React from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { RouteComponentProps } from "react-router-dom";
-import { Button } from "antd";
+import * as React from "react"
+import { Query } from "react-apollo"
+import gql from "graphql-tag"
+import { RouteComponentProps } from "react-router-dom"
+import { Button } from "antd"
+import { UserAvatarButton } from "./userAvatarButton/userAvatarButton"
 
 const meQuery = gql`
   {
@@ -12,7 +13,7 @@ const meQuery = gql`
       username
     }
   }
-`;
+`
 
 export class MainHeader extends React.PureComponent<RouteComponentProps<{}>> {
   render() {
@@ -29,19 +30,28 @@ export class MainHeader extends React.PureComponent<RouteComponentProps<{}>> {
                   flexDirection: "row-reverse"
                 }}
               >
+                <div
+                  style={{
+                    marginTop: 2
+                  }}
+                >
+                  <UserAvatarButton {...this.props} />
+                </div>
+
                 <Button
                   style={{
-                    marginTop: "18px"
+                    marginTop: 18,
+                    marginRight: 16
                   }}
                   type="danger"
                   onClick={() => {
-                    this.props.history.push("/logout");
+                    this.props.history.push("/logout")
                   }}
                 >
                   Log out
                 </Button>
               </div>
-            );
+            )
           } else {
             return (
               <div
@@ -59,7 +69,7 @@ export class MainHeader extends React.PureComponent<RouteComponentProps<{}>> {
                   }}
                   type="primary"
                   onClick={() => {
-                    this.props.history.push("/login");
+                    this.props.history.push("/login")
                   }}
                 >
                   Login
@@ -70,16 +80,16 @@ export class MainHeader extends React.PureComponent<RouteComponentProps<{}>> {
                   }}
                   type="danger"
                   onClick={() => {
-                    this.props.history.push("/register");
+                    this.props.history.push("/register")
                   }}
                 >
                   Register
                 </Button>
               </div>
-            );
+            )
           }
         }}
       </Query>
-    );
+    )
   }
 }
